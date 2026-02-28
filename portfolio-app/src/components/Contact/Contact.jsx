@@ -1,8 +1,8 @@
 // ==============================================================
-// Contact.jsx — Contact section with form validation
+// Contact.jsx — Contact section with Formspree integration
 // ==============================================================
 import { useState, useRef, useEffect } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPaperPlane, FaCheckCircle, FaWhatsapp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaPaperPlane, FaCheckCircle, FaWhatsapp, FaExclamationCircle } from 'react-icons/fa';
 import './Contact.css';
 
 // Initial form state
@@ -12,7 +12,9 @@ const Contact = () => {
     const [form, setForm] = useState(INITIAL_FORM);
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [submittedName, setSubmittedName] = useState('');
     const [sending, setSending] = useState(false);
+    const [sendError, setSendError] = useState('');
     const sectionRef = useRef(null);
 
     // Fade-in on scroll
@@ -49,32 +51,45 @@ const Contact = () => {
         if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const errs = validate();
         if (Object.keys(errs).length > 0) {
             setErrors(errs);
             return;
         }
+
         setSending(true);
-        
-        // Send email using mailto link
-        const subject = encodeURIComponent(form.subject);
-        const body = encodeURIComponent(
-            `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`
-        );
-        const mailtoLink = `mailto:punitbadyal01@gmail.com?subject=${subject}&body=${body}`;
-        
-        // Open email client
-        window.location.href = mailtoLink;
-        
-        // Show success message
-        setTimeout(() => {
-            setSending(false);
-            setSubmitted(true);
+        setSendError('');
+
+        try {
+            const res = await fetch(
+                `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                    body: JSON.stringify({
+                        name: form.name,
+                        email: form.email,
+                        subject: form.subject,
+                        message: form.message,
+                    }),
+                }
+            );
+
+            if (!res.ok) throw new Error('Formspree responded with ' + res.status);
+
+            const senderName = form.name;
             setForm(INITIAL_FORM);
-            setTimeout(() => setSubmitted(false), 5000);
-        }, 500);
+            setSubmittedName(senderName);
+            setSubmitted(true);
+            setTimeout(() => setSubmitted(false), 6000);
+        } catch (err) {
+            console.error('Formspree error:', err);
+            setSendError('Oops! Something went wrong. Please try again or email me directly at punitbadyal01@gmail.com.');
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -170,10 +185,19 @@ const Contact = () => {
                     <div className="contact__form-card fade-in">
                         <h3 className="contact__form-title">Send a Message 📬</h3>
 
-                        {/* Success message */}
+                        {/* Success banner */}
                         {submitted && (
                             <div className="form-success" role="alert">
-                                <FaCheckCircle /> Message sent! I'll reply soon. Thanks, {form.name || 'friend'}!
+                                <FaCheckCircle />
+                                <span>Message sent! I'll reply soon. Thanks, <strong>{submittedName || 'friend'}</strong>! 🎉</span>
+                            </div>
+                        )}
+
+                        {/* Error banner */}
+                        {sendError && (
+                            <div className="form-send-error" role="alert">
+                                <FaExclamationCircle />
+                                <span>{sendError}</span>
                             </div>
                         )}
 
