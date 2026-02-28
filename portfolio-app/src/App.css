@@ -1,0 +1,34 @@
+/* App.css — Smooth scroll and performance optimizations */
+
+/* Smooth scroll container */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Optimize scroll performance */
+.page-wrapper {
+  will-change: scroll-position;
+}
+
+/* Smooth section transitions */
+main section {
+  position: relative;
+  width: 100%;
+}
+
+/* Reduce motion for users who prefer it (accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
