@@ -73,24 +73,31 @@ const Navbar = ({ activeSection, scrolled, isDark, toggleTheme }) => {
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile Dropdown Menu */}
             <div className={`navbar__mobile${menuOpen ? ' open' : ''}`} role="dialog" aria-label="Mobile navigation">
-                {navLinks.map((link) => (
-                    <a
-                        key={link.id}
-                        className={`navbar__mobile-link${activeSection === link.id ? ' active' : ''}`}
-                        onClick={() => handleNavClick(link.id)}
-                        href={`#${link.id}`}
-                    >
-                        {link.label}
+                <ul className="navbar__mobile-list" role="list">
+                    {navLinks.map((link) => (
+                        <li key={link.id}>
+                            <a
+                                className={`navbar__mobile-link${activeSection === link.id ? ' active' : ''}`}
+                                onClick={() => handleNavClick(link.id)}
+                                href={`#${link.id}`}
+                            >
+                                {link.label}
+                                {activeSection === link.id && <span className="navbar__mobile-dot" aria-hidden="true" />}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <div className="navbar__mobile-footer">
+                    <button className="navbar__mobile-theme-btn" onClick={() => { toggleTheme(); setMenuOpen(false); }}>
+                        <span className="navbar__mobile-theme-icon">{isDark ? '☀️' : '🌙'}</span>
+                        <span>{isDark ? 'Light Mode' : 'Dark Mode'}</span>
+                    </button>
+                    <a className="navbar__mobile-resume-btn" href="/resume.pdf" download>
+                        Download Resume ↓
                     </a>
-                ))}
-                <button className="theme-toggle" onClick={() => { toggleTheme(); setMenuOpen(false); }} style={{ fontSize: '1.5rem', background: 'none', border: 'none', cursor: 'pointer', marginTop: '1rem' }}>
-                    {isDark ? '☀️ Light Mode' : '🌙 Dark Mode'}
-                </button>
-                <a className="btn btn-primary" href="/resume.pdf" download style={{ marginTop: '1rem' }}>
-                    Download Resume
-                </a>
+                </div>
             </div>
         </nav>
     );
