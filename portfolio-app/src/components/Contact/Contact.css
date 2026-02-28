@@ -166,7 +166,7 @@
 .form-success {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.65rem;
     padding: 0.9rem 1.1rem;
     background: rgba(52, 211, 153, 0.1);
     border: 1px solid rgba(52, 211, 153, 0.3);
@@ -175,6 +175,27 @@
     font-size: 0.88rem;
     font-weight: 500;
     margin-bottom: 1rem;
+    animation: slideDown 0.3s ease;
+}
+
+.form-send-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-sm);
+    color: #f87171;
+    font-size: 0.88rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .form-submit {
