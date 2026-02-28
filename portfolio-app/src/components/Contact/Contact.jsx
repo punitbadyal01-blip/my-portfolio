@@ -64,7 +64,7 @@ const Contact = () => {
 
         try {
             const res = await fetch(
-                `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`,
+                'https://formspree.io/f/mykdvlbe',
                 {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
