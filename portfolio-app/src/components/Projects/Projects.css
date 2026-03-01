@@ -199,6 +199,22 @@
     }
 }
 
+@media (max-width: 768px) {
+    .projects__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.1rem;
+    }
+
+    .project-card__body {
+        padding: 1.25rem;
+    }
+
+    .project-card__title {
+        font-size: 0.94rem;
+    }
+}
+
+
 @media (max-width: 640px) {
     .projects__grid {
         grid-template-columns: 1fr;
