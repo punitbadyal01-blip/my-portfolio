@@ -94,6 +94,13 @@ export default function Chatbot() {
     }
   }, [isOpen]);
 
+  // Listen for external "open-punit-ai" event (e.g. Home CTA button)
+  useEffect(() => {
+    const handler = () => setIsOpen(true);
+    window.addEventListener('open-punit-ai', handler);
+    return () => window.removeEventListener('open-punit-ai', handler);
+  }, []);
+
   // Cleanup abort on unmount
   useEffect(() => () => abortRef.current?.abort(), []);
 

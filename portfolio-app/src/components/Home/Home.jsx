@@ -6,6 +6,8 @@ import { FaGithub, FaLinkedin, FaDownload, FaArrowDown } from 'react-icons/fa';
 import profilePhoto from '../../assets/profile.jpg';
 import './Home.css';
 
+const openPunitAI = () => window.dispatchEvent(new CustomEvent('open-punit-ai'));
+
 const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -87,6 +89,27 @@ const Home = () => {
                             View Projects <FaArrowDown />
                         </button>
                     </div>
+
+                    {/* ── Punit AI Chat CTA ── */}
+                    <button
+                        className="punit-ai-cta"
+                        onClick={openPunitAI}
+                        aria-label="Chat with Punit AI"
+                    >
+                        <span className="punit-ai-cta__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
+                                <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+                            </svg>
+                        </span>
+                        <span className="punit-ai-cta__text">
+                            <span className="punit-ai-cta__label">Chat with Punit AI</span>
+                            <span className="punit-ai-cta__sub">Ask me anything · Powered by OpenAI</span>
+                        </span>
+                        <span className="punit-ai-cta__pulse" aria-hidden="true" />
+                    </button>
 
                     {/* Social links */}
                     <div className="home__socials">
