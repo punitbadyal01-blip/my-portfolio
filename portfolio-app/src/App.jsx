@@ -7,6 +7,7 @@ import './index.css';
 // Section components
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
+import Chatbot from './components/Chatbot/Chatbot';
 import About from './components/About/About';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
@@ -67,6 +68,9 @@ function App() {
       </main>
 
       <Footer />
+
+      {/* ── Punit AI Chatbot ─────────────────────────────── */}
+      <Chatbot />
     </div>
   );
 }
