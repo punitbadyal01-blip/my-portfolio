@@ -558,3 +558,126 @@
         padding: 0.85rem 1.1rem;
     }
 }
+
+/* ── AI Bot Badge on Profile Photo ────────────────────────── */
+.home__ai-bot-badge {
+    position: absolute;
+    bottom: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 18px 8px 10px;
+    border-radius: 50px;
+    border: 1px solid rgba(139, 122, 255, 0.5);
+    background: rgba(13, 18, 37, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    cursor: pointer;
+    font-family: inherit;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(139, 122, 255, 0.35), 0 0 0 0 rgba(139,122,255,0.2);
+    animation: badgeFloat 3.5s ease-in-out infinite;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.3s ease,
+                border-color 0.3s ease;
+}
+
+.home__ai-bot-badge:hover {
+    transform: translateX(-50%) translateY(-4px) scale(1.06);
+    border-color: rgba(139, 122, 255, 0.9);
+    box-shadow: 0 16px 40px rgba(139, 122, 255, 0.5), 0 0 0 4px rgba(139,122,255,0.1);
+}
+
+/* Outer pulse ring */
+.home__ai-bot-badge__ring {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50px;
+    border: 2px solid rgba(139, 122, 255, 0.35);
+    animation: badgeRingPulse 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes badgeRingPulse {
+    0%, 100% { transform: scale(1);    opacity: 0.6; }
+    60%       { transform: scale(1.08); opacity: 0;   }
+}
+
+/* Icon circle */
+.home__ai-bot-badge__icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #8b7aff 0%, #22d3ee 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(139,122,255,0.6);
+}
+
+.home__ai-bot-badge__icon svg {
+    width: 15px;
+    height: 15px;
+}
+
+/* Label */
+.home__ai-bot-badge__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #c4b5fd, #22d3ee);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Online green dot */
+.home__ai-bot-badge__dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    flex-shrink: 0;
+    margin-left: 2px;
+    box-shadow: 0 0 6px rgba(34, 197, 94, 0.8);
+    animation: dotBlink 2s ease-in-out infinite;
+}
+
+@keyframes dotBlink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.6; transform: scale(0.85); }
+}
+
+@keyframes badgeFloat {
+    0%, 100% { bottom: -18px; }
+    50%       { bottom: -13px; }
+}
+
+/* Ensure avatar-wrapper has enough space below for the badge */
+.home__ai-bot-badge ~ * ,
+.home__avatar-wrapper {
+    margin-bottom: 0;
+}
+
+.home__right {
+    padding-bottom: 28px;
+}
+
+@media (max-width: 768px) {
+    .home__ai-bot-badge {
+        bottom: -16px;
+        padding: 7px 14px 7px 8px;
+        font-size: 0.75rem;
+    }
+
+    .home__ai-bot-badge__icon {
+        width: 26px;
+        height: 26px;
+    }
+}

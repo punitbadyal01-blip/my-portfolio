@@ -154,7 +154,7 @@ const Home = () => {
                 </div>
 
                 {/* ---- Right: Avatar ---- */}
-                <div className="home__right" aria-hidden="true">
+                <div className="home__right">
                     {/* Floating tech badges */}
                     <div className="home__float-badge badge-top-left">
                         ⚛️ React.js
@@ -174,6 +174,26 @@ const Home = () => {
                         <div className="home__avatar-card">
                             <img src={profilePhoto} alt="Punit Badyal" className="home__avatar-image" />
                         </div>
+
+                        {/* AI Bot Badge — bottom of photo */}
+                        <button
+                            className="home__ai-bot-badge"
+                            onClick={(e) => { e.preventDefault(); e.stopPropagation(); openPunitAI(); }}
+                            aria-label="Chat with Punit AI"
+                            title="Chat with Punit AI"
+                        >
+                            <span className="home__ai-bot-badge__ring" aria-hidden="true" />
+                            <span className="home__ai-bot-badge__icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                    <circle cx="9" cy="10" r="1" fill="currentColor" stroke="none" />
+                                    <circle cx="12" cy="10" r="1" fill="currentColor" stroke="none" />
+                                    <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
+                                </svg>
+                            </span>
+                            <span className="home__ai-bot-badge__label">Punit AI</span>
+                            <span className="home__ai-bot-badge__dot" aria-hidden="true" />
+                        </button>
                     </div>
                 </div>
 
