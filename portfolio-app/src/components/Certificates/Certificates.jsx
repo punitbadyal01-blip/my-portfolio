@@ -52,10 +52,6 @@ const Certificates = () => {
                         Certificates &amp; <span className="gradient-text">Credentials</span>
                     </h2>
                     <div className="section-divider" />
-                    <p className="cert-header-note">
-                        <FaAward style={{ marginRight: '0.4rem', color: 'var(--accent-primary)' }} />
-                        {total} certified credentials — click any to view full size
-                    </p>
                 </div>
 
                 {/* ── Masonry Grid ── */}
