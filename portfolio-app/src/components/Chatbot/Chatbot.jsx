@@ -9,6 +9,126 @@ import './Chatbot.css';
 // ── Config ──────────────────────────────────────────────────────
 const API_URL = import.meta.env.VITE_CHATBOT_API_URL || 'http://localhost:5000/api/chat';
 
+// ── Local Knowledge Base ─────────────────────────────────────────
+// Handles common messages instantly without needing the backend.
+const LOCAL_KB = [
+  // ── Greetings ──
+  {
+    patterns: [/^(hi|hello|hey|hii|helo|heya|howdy|sup|yo|good\s*(morning|afternoon|evening|night))/i],
+    responses: [
+      "Hey there! 👋 I'm **Punit AI**, the personal assistant of **Punit Badyal**.\n\nFeel free to ask me about his skills, projects, experience, or how to get in touch!",
+      "Hello! Great to meet you! 😊 I'm **Punit AI**.\n\nI can tell you all about Punit — his work, skills, and how to collaborate with him. What would you like to know?",
+    ],
+  },
+  // ── How are you ──
+  {
+    patterns: [/how are you|how r u|how do you do|you good|you ok/i],
+    responses: [
+      "I'm doing great, thank you for asking! 😊 I'm always ready to help you learn more about **Punit Badyal**.\n\nWhat can I help you with today?",
+    ],
+  },
+  // ── What is your name ──
+  {
+    patterns: [/what('?s| is) your name|who are you|introduce yourself/i],
+    responses: [
+      "I'm **Punit AI** 🤖 — the intelligent assistant representing **Punit Badyal**, a 2nd-year Computer Science Engineering student and Full Stack + AI developer.\n\nI can answer any questions about his skills, projects, availability, and more!",
+    ],
+  },
+  // ── About Punit ──
+  {
+    patterns: [/about punit|who is punit|tell me about|about him|punit badyal/i],
+    responses: [
+      "**Punit Badyal** is a 2nd-year Computer Science Engineering student at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu, originally from Jammu & Kashmir, India.\n\nHe is a passionate **Full Stack & AI Developer** who builds scalable, intelligent, and real-world software. His goal is to become a highly skilled Full Stack & AI Engineer making meaningful impact through technology.\n\nHe is currently open to **internships, freelance work, and international remote roles**.",
+    ],
+  },
+  // ── Skills ──
+  {
+    patterns: [/skill|tech|stack|know|language|framework|expertise|proficien/i],
+    responses: [
+      "Here's a breakdown of **Punit's technical skills**:\n\n⚛️ **Frontend:** React.js, HTML5, CSS3, Responsive UI Design\n\n🖥️ **Backend:** Node.js, Express.js, Spring Boot, REST API Development\n\n💻 **Programming Languages:** Java, JavaScript, Python\n\n🧠 **CS Fundamentals:** Data Structures & Algorithms, OOP, Problem Solving, System Design\n\n🤖 **AI / ML:** Computer Vision, Image Processing, AI-powered Web Applications",
+    ],
+  },
+  // ── Projects ──
+  {
+    patterns: [/project|built|work|portfolio|application|app|system/i],
+    responses: [
+      "Punit has built some impressive projects:\n\n🖐️ **1. Hand Gesture Game Control System**\nBuilt with Python & Computer Vision — real-time hand tracking for gesture-based game control.\n\n📦 **2. Online Courier Service System**\nA full-stack web application with React frontend, backend integration, and both admin & user panels.\n\n🖼️ **3. Watermark Adder Application**\nA Python-powered web app with a custom watermark feature and clean web-based UI.\n\nWant to collaborate on something similar? Reach out at **punitbadyal01@gmail.com**!",
+    ],
+  },
+  // ── Hire / Collaborate ──
+  {
+    patterns: [/hire|collaborat|work together|freelanc|job|intern|opportunit|contract|recruit/i],
+    responses: [
+      "**Punit is actively open to:**\n\n✅ Internship opportunities\n✅ Freelance web & AI projects\n✅ International remote positions\n✅ Startup collaborations\n✅ Long-term development roles\n\n**Freelance pricing:** ₹999 – ₹9,999 depending on project scope.\n\n📧 **Email:** punitbadyal01@gmail.com\n🐙 **GitHub:** github.com/punitbadyal01-blip\n\nDon't hesitate to reach out — he'd love to connect!",
+    ],
+  },
+  // ── Contact ──
+  {
+    patterns: [/contact|reach|email|phone|number|github|linkedin|social|connect|message/i],
+    responses: [
+      "Here's how you can reach **Punit Badyal**:\n\n📧 **Email:** punitbadyal01@gmail.com\n📱 **Phone:** +91 7780886857\n🐙 **GitHub:** github.com/punitbadyal01-blip\n📍 **Location:** Jammu & Kashmir, India\n\nHe typically responds within 24 hours. Feel free to reach out for collaborations, internships, or freelance work!",
+    ],
+  },
+  // ── Education ──
+  {
+    patterns: [/educat|college|university|degree|study|student|cse|engineer|course/i],
+    responses: [
+      "Punit is currently pursuing his **B.E. in Computer Science Engineering (2nd Year)** at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu.\n\nHe combines his academic foundation with hands-on project experience in Full Stack Development and AI/ML.",
+    ],
+  },
+  // ── Services ──
+  {
+    patterns: [/service|offer|do for|help with|build for|develop|price|cost|rate/i],
+    responses: [
+      "**Services Punit offers:**\n\n🌐 Frontend Web Development (React.js)\n⚙️ Full Stack Web Applications\n🔌 Backend API Development\n🤖 AI / ML Based Applications\n🎨 Custom Portfolio Websites\n\n**Pricing:** ₹999 – ₹9,999 depending on complexity.\n\nReach out at **punitbadyal01@gmail.com** to discuss your project!",
+    ],
+  },
+  // ── Location ──
+  {
+    patterns: [/locat|where|from|country|city|state|india|jammu/i],
+    responses: [
+      "Punit is based in **Jammu & Kashmir, India** 🇮🇳 and is fully open to **international remote work** and **online collaborations** from anywhere in the world.",
+    ],
+  },
+  // ── AI / ML ──
+  {
+    patterns: [/ai|machine learning|ml|computer vision|deep learning|neural|python ai/i],
+    responses: [
+      "Punit has hands-on experience in **AI & ML**, including:\n\n👁️ **Computer Vision** — real-time hand tracking (Hand Gesture Game Control Project)\n🖼️ **Image Processing** — Watermark Adder Application\n🤖 **AI-powered Web Apps** — integrating AI models into full-stack applications\n\nHe's deeply passionate about building intelligent systems that solve real-world problems.",
+    ],
+  },
+  // ── Thanks ──
+  {
+    patterns: [/thank|thanks|thx|appreciate|great|awesome|nice|cool|good/i],
+    responses: [
+      "You're welcome! 😊 It's my pleasure to help.\n\nIf you'd like to connect with Punit directly, reach out at **punitbadyal01@gmail.com**. Have a great day!",
+    ],
+  },
+  // ── Bye ──
+  {
+    patterns: [/bye|goodbye|see you|later|cya|take care|good night/i],
+    responses: [
+      "Goodbye! 👋 It was great talking with you.\n\nDon't hesitate to come back if you have more questions about Punit. Have a wonderful day! 🌟",
+    ],
+  },
+];
+
+function getLocalReply(text) {
+  const lower = text.toLowerCase().trim();
+  for (const entry of LOCAL_KB) {
+    if (entry.patterns.some((p) => p.test(lower))) {
+      const arr = entry.responses;
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+  }
+  return null;
+}
+
+// Simulates a short typing delay for realism
+function fakeDelay(ms = 600) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
 const QUICK_SUGGESTIONS = [
   { label: '👤 About Punit', value: 'Tell me about Punit Badyal.' },
   { label: '⚡ Skills', value: 'What are Punit\'s technical skills?' },
@@ -119,11 +239,23 @@ export default function Chatbot() {
       setMessages(history);
       setIsLoading(true);
 
-      abortRef.current = new AbortController();
+      // ── 1. Try local knowledge base first ──────────────────
+      const localReply = getLocalReply(trimmed);
+      if (localReply) {
+        await fakeDelay(500 + Math.random() * 400);
+        setMessages((prev) => [
+          ...prev,
+          { role: 'assistant', content: localReply, id: Date.now() },
+        ]);
+        setIsLoading(false);
+        return;
+      }
 
+      // ── 2. Fall back to OpenAI backend ─────────────────────
+      abortRef.current = new AbortController();
       try {
         const payload = history
-          .filter((m) => m.role !== 'welcome')
+          .filter((m) => m.id !== 'welcome')
           .map(({ role, content }) => ({ role, content }));
 
         const res = await fetch(API_URL, {
@@ -134,7 +266,6 @@ export default function Chatbot() {
         });
 
         const data = await res.json();
-
         if (!res.ok) throw new Error(data.error || 'Server error');
 
         setMessages((prev) => [
@@ -143,7 +274,17 @@ export default function Chatbot() {
         ]);
       } catch (err) {
         if (err.name === 'AbortError') return;
-        setError(err.message || 'Something went wrong. Please try again.');
+        // Backend unavailable — give a graceful fallback answer
+        await fakeDelay(400);
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: 'assistant',
+            content:
+              "That's a great question! For detailed answers on anything specific, feel free to reach out to Punit directly:\n\n📧 **punitbadyal01@gmail.com**\n🐙 **github.com/punitbadyal01-blip**\n\nHe typically responds within 24 hours. 😊",
+            id: Date.now(),
+          },
+        ]);
       } finally {
         setIsLoading(false);
       }
