@@ -81,6 +81,11 @@ const Certificates = () => {
                                     <span className="cert-tile__num">#{index + 1}</span>
                                 </div>
                             </div>
+                            {/* Bottom caption */}
+                            <div className="cert-tile__caption">
+                                <span className="cert-tile__caption-title">{cert.title}</span>
+                                <span className="cert-tile__caption-issuer">{cert.issuer}</span>
+                            </div>
                             {/* Corner badge */}
                             <span className="cert-tile__badge">{index + 1}</span>
                         </button>
@@ -101,9 +106,13 @@ const Certificates = () => {
 
                         {/* Top bar */}
                         <div className="cert-lightbox__topbar">
-                            <span className="cert-lightbox__counter">
-                                {lightbox + 1} <span style={{ opacity: 0.4 }}>/ {total}</span>
-                            </span>
+                            <div className="cert-lightbox__info">
+                                <span className="cert-lightbox__counter">
+                                    {lightbox + 1} <span style={{ opacity: 0.4 }}>/ {total}</span>
+                                </span>
+                                <span className="cert-lightbox__title">{certificatesData[lightbox].title}</span>
+                                <span className="cert-lightbox__issuer">{certificatesData[lightbox].issuer}</span>
+                            </div>
                             <button className="cert-lightbox__close" onClick={close} aria-label="Close">
                                 <FaTimes />
                             </button>
