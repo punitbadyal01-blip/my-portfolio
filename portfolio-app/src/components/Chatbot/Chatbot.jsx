@@ -385,7 +385,7 @@ export default function Chatbot() {
               <span className="online-dot" aria-hidden="true" />
             </div>
             <div>
-              <p className="chat-header__name">Punit AI</p>
+              <p className="chat-header__name">Punit </p>
               <p className="chat-header__status">● Online — Powered by OpenAI</p>
             </div>
           </div>
