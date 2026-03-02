@@ -6,14 +6,14 @@ import './Particles.css';
 
 const Particles = () => {
     const particles = useMemo(() =>
-        Array.from({ length: 75 }, (_, i) => ({
+        Array.from({ length: 140 }, (_, i) => ({
             id: i,
-            size: Math.random() * 2.5 + 0.8,
+            size: Math.random() * 3 + 0.8,
             x: Math.random() * 100,
             y: Math.random() * 100,
-            duration: Math.random() * 18 + 10,
+            duration: Math.random() * 14 + 8,
             delay: -(Math.random() * 20),
-            type: i % 3, // 0=purple, 1=cyan, 2=white
+            type: i % 4, // 0=purple dot, 1=cyan dot, 2=white dot, 3=star
         })),
         []
     );
@@ -21,18 +21,32 @@ const Particles = () => {
     return (
         <div className="particles-bg" aria-hidden="true">
             {particles.map((p) => (
-                <span
-                    key={p.id}
-                    className={`particle particle--${p.type}`}
-                    style={{
-                        width: p.size + 'px',
-                        height: p.size + 'px',
-                        left: p.x + '%',
-                        top: p.y + '%',
-                        animationDuration: p.duration + 's',
-                        animationDelay: p.delay + 's',
-                    }}
-                />
+                p.type === 3 ? (
+                    <span
+                        key={p.id}
+                        className="particle particle--star"
+                        style={{
+                            fontSize: (p.size * 3.2) + 'px',
+                            left: p.x + '%',
+                            top: p.y + '%',
+                            animationDuration: p.duration + 's',
+                            animationDelay: p.delay + 's',
+                        }}
+                    >★</span>
+                ) : (
+                    <span
+                        key={p.id}
+                        className={`particle particle--${p.type}`}
+                        style={{
+                            width: p.size + 'px',
+                            height: p.size + 'px',
+                            left: p.x + '%',
+                            top: p.y + '%',
+                            animationDuration: p.duration + 's',
+                            animationDelay: p.delay + 's',
+                        }}
+                    />
+                )
             ))}
         </div>
     );

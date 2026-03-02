@@ -134,6 +134,7 @@ const Home = () => {
 
                 {/* ---- Right: Avatar ---- */}
                 <div className="home__right">
+
                     {/* Floating tech badges */}
                     <div className="home__float-badge badge-top-left">
                         ⚛️ React.js
@@ -145,13 +146,16 @@ const Home = () => {
                         🐍 Python
                     </div>
 
-                    {/* Avatar */}
-                    <div className="home__avatar-wrapper">
-                        <div className="home__avatar-card">
-                            <img src={profilePhoto} alt="Punit Badyal" className="home__avatar-image" />
+                    {/* Avatar column: photo + AI badge below */}
+                    <div className="home__avatar-col">
+                        {/* Photo */}
+                        <div className="home__avatar-wrapper">
+                            <div className="home__avatar-card">
+                                <img src={profilePhoto} alt="Punit Badyal" className="home__avatar-image" />
+                            </div>
                         </div>
 
-                        {/* AI Bot Badge — bottom of photo */}
+                        {/* AI Bot Badge — BELOW photo */}
                         <button
                             className="home__ai-bot-badge"
                             onClick={(e) => { e.preventDefault(); e.stopPropagation(); openPunitAI(); }}
@@ -167,10 +171,11 @@ const Home = () => {
                                     <circle cx="15" cy="10" r="1" fill="currentColor" stroke="none" />
                                 </svg>
                             </span>
-                            <span className="home__ai-bot-badge__label">Punit AI</span>
+                            <span className="home__ai-bot-badge__label">Chat with Punit AI</span>
                             <span className="home__ai-bot-badge__dot" aria-hidden="true" />
                         </button>
                     </div>
+
                 </div>
 
             </div>

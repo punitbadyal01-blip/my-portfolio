@@ -171,8 +171,8 @@
 
 .home__avatar-wrapper {
     position: relative;
-    width: 340px;
-    height: 340px;
+    width: 260px;
+    height: 260px;
 }
 
 .home__avatar-ring {
@@ -187,22 +187,27 @@
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
+
+/* Column that holds photo + AI badge */
+.home__avatar-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    position: relative;
 }
 
 .home__avatar-card {
     position: relative;
     width: 100%;
     height: 100%;
-    border-radius: 28px;
+    border-radius: 50%;
     background: var(--gradient-card);
-    border: 2px solid rgba(108, 99, 255, 0.5);
-    box-shadow: 0 0 30px rgba(108, 99, 255, 0.18), 0 0 60px rgba(34, 211, 238, 0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 7rem;
+    border: 3px solid rgba(108, 99, 255, 0.55);
+    box-shadow:
+        0 0 0 6px rgba(108, 99, 255, 0.08),
+        0 0 30px rgba(108, 99, 255, 0.25),
+        0 0 60px rgba(34, 211, 238, 0.1);
     overflow: hidden;
 }
 
@@ -210,8 +215,9 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 20%;
-    border-radius: 26px;
+    object-position: center 15%;
+    border-radius: 50%;
+    display: block;
 }
 
 .home__avatar-initials {
@@ -343,8 +349,8 @@
     }
 
     .home__avatar-wrapper {
-        width: 260px;
-        height: 260px;
+        width: 220px;
+        height: 220px;
     }
 
     .badge-top-left {
@@ -438,18 +444,18 @@
     }
 }
 
-/* ── AI Bot Badge on Profile Photo ────────────────────────── */
+/* ── AI Bot Badge \u2014 sits below photo ────────────────────────── */
 .home__ai-bot-badge {
-    position: absolute;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
     z-index: 10;
 
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 8px 18px 8px 10px;
+    padding: 9px 20px 9px 12px;
     border-radius: 50px;
     border: 1px solid rgba(139, 122, 255, 0.5);
     background: rgba(13, 18, 37, 0.92);
@@ -458,7 +464,7 @@
     cursor: pointer;
     font-family: inherit;
     white-space: nowrap;
-    box-shadow: 0 8px 32px rgba(139, 122, 255, 0.35), 0 0 0 0 rgba(139,122,255,0.2);
+    box-shadow: 0 8px 32px rgba(139, 122, 255, 0.3), 0 0 0 0 rgba(139,122,255,0.2);
     animation: badgeFloat 3.5s ease-in-out infinite;
     transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1),
                 box-shadow 0.3s ease,
@@ -466,7 +472,7 @@
 }
 
 .home__ai-bot-badge:hover {
-    transform: translateX(-50%) translateY(-4px) scale(1.06);
+    transform: translateY(-4px) scale(1.05);
     border-color: rgba(139, 122, 255, 0.9);
     box-shadow: 0 16px 40px rgba(139, 122, 255, 0.5), 0 0 0 4px rgba(139,122,255,0.1);
 }
@@ -534,25 +540,18 @@
 }
 
 @keyframes badgeFloat {
-    0%, 100% { bottom: -18px; }
-    50%       { bottom: -13px; }
-}
-
-/* Ensure avatar-wrapper has enough space below for the badge */
-.home__ai-bot-badge ~ * ,
-.home__avatar-wrapper {
-    margin-bottom: 0;
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
 }
 
 .home__right {
-    padding-bottom: 28px;
+    padding-bottom: 0;
 }
 
 @media (max-width: 768px) {
     .home__ai-bot-badge {
-        bottom: -16px;
-        padding: 7px 14px 7px 8px;
-        font-size: 0.75rem;
+        padding: 7px 14px 7px 9px;
+        font-size: 0.8rem;
     }
 
     .home__ai-bot-badge__icon {
