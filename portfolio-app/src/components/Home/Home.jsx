@@ -145,11 +145,8 @@ const Home = () => {
                         🐍 Python
                     </div>
 
-                    {/* Animated ring avatar */}
+                    {/* Avatar */}
                     <div className="home__avatar-wrapper">
-                        <div className="home__avatar-ring">
-                            <div className="home__avatar-ring-inner" />
-                        </div>
                         <div className="home__avatar-card">
                             <img src={profilePhoto} alt="Punit Badyal" className="home__avatar-image" />
                         </div>

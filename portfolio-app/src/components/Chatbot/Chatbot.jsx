@@ -38,7 +38,7 @@ const LOCAL_KB = [
   {
     patterns: [/about punit|who is punit|tell me about|about him|punit badyal/i],
     responses: [
-      "**Punit Badyal** is a 2nd-year Computer Science Engineering student at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu, originally from Jammu & Kashmir, India.\n\nHe is a passionate **Full Stack & AI Developer** who builds scalable, intelligent, and real-world software. His goal is to become a highly skilled Full Stack & AI Engineer making meaningful impact through technology.\n\nHe is currently open to **internships, freelance work, and international remote roles**.",
+      "**Punit Badyal** is a passionate **Full Stack & AI Developer**, currently in his 2nd year of **B.E. Computer Science Engineering** at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu.\n\n📅 **Date of Birth:** January 27, 2005\n🎂 **Age:** 21 years old\n📍 **Hometown:** Jammu & Kashmir, India\n🏫 **Currently:** Karur, Tamil Nadu (for studies)\n\nHe builds scalable, intelligent, real-world software and is actively open to **internships, freelance work, and international remote roles**.",
     ],
   },
   // ── Skills ──
@@ -59,7 +59,42 @@ const LOCAL_KB = [
   {
     patterns: [/hire|collaborat|work together|freelanc|job|intern|opportunit|contract|recruit/i],
     responses: [
-      "**Punit is actively open to:**\n\n✅ Internship opportunities\n✅ Freelance web & AI projects\n✅ International remote positions\n✅ Startup collaborations\n✅ Long-term development roles\n\n**Freelance pricing:** ₹999 – ₹9,999 depending on project scope.\n\n📧 **Email:** punitbadyal01@gmail.com\n🐙 **GitHub:** github.com/punitbadyal01-blip\n\nDon't hesitate to reach out — he'd love to connect!",
+      "**Punit is actively open to:**\n\n✅ Internship opportunities\n✅ Freelance web & AI projects\n✅ International remote positions\n✅ Startup collaborations\n✅ Long-term development roles\n\n**Starting from ₹999** — price depends on project scope (see 'services' for full pricing).\n\n📧 **Email:** punitbadyal01@gmail.com\n🐙 **GitHub:** github.com/punitbadyal01-blip\n\nDon't hesitate to reach out — he'd love to connect!",
+    ],
+  },
+  // ── Date of Birth / Age ──
+  {
+    patterns: [/dob|date of birth|born|birthday|birth date|how old|age|27.*jan|jan.*27/i],
+    responses: [
+      "**Punit Badyal** was born on **January 27, 2005** 🎂\n\nHe is currently **21 years old**.\n\nHe started coding during school and has been building real projects for over 2+ years.",
+    ],
+  },
+  // ── Hobbies / Personal ──
+  {
+    patterns: [/hobby|hobbies|interest|passion|like to do|free time|personal|fun|outside work/i],
+    responses: [
+      "Outside of coding, **Punit enjoys**:\n\n🎮 Gaming (loves immersive & strategy games)\n📚 Reading tech blogs & staying current with AI trends\n🎵 Listening to music\n🤝 Helping peers with programming problems\n🌐 Exploring open-source projects\n\nHis biggest passion is building things that solve real problems — he often works on side projects just for the love of learning.",
+    ],
+  },
+  // ── Goals / Future ──
+  {
+    patterns: [/goal|dream|future|aspiration|plan|vision|ambition|aim/i],
+    responses: [
+      "**Punit's goals:**\n\n🚀 Become a top-tier **Full Stack & AI Engineer**\n💼 Land a high-impact internship or remote role\n🌍 Work on products that reach **millions of users**\n🧠 Deepen expertise in **AI/ML & System Design**\n🏢 Eventually build his own tech startup\n\nHe strongly believes in learning by building and is constantly working on new projects.",
+    ],
+  },
+  // ── Nationality / Background ──
+  {
+    patterns: [/nationality|background|origin|hometown|native|kashmir|jk|jammu/i],
+    responses: [
+      "Punit is originally from **Jammu & Kashmir, India** 🇮🇳 — a beautiful region in the northern part of India.\n\nHe is currently studying in **Karur, Tamil Nadu** at M.Kumarasamy College of Engineering.\n\nHe is fully open to **remote work and international collaborations** from anywhere in the world.",
+    ],
+  },
+  // ── College / Academic Year ──
+  {
+    patterns: [/which year|what year|sem|semester|batch|2nd year|second year|current year|academic/i],
+    responses: [
+      "Punit is currently in **2nd Year (3rd Semester)** of his B.E. Computer Science Engineering at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu.\n\nExpected graduation: **2027** 🎓",
     ],
   },
   // ── Contact ──
@@ -76,11 +111,11 @@ const LOCAL_KB = [
       "Punit is currently pursuing his **B.E. in Computer Science Engineering (2nd Year)** at **M.Kumarasamy College of Engineering**, Karur, Tamil Nadu.\n\nHe combines his academic foundation with hands-on project experience in Full Stack Development and AI/ML.",
     ],
   },
-  // ── Services ──
+  // ── Services & Pricing ──
   {
-    patterns: [/service|offer|do for|help with|build for|develop|price|cost|rate/i],
+    patterns: [/service|offer|do for|help with|build for|develop|price|cost|rate|package|plan|charge|fee|budget/i],
     responses: [
-      "**Services Punit offers:**\n\n🌐 Frontend Web Development (React.js)\n⚙️ Full Stack Web Applications\n🔌 Backend API Development\n🤖 AI / ML Based Applications\n🎨 Custom Portfolio Websites\n\n**Pricing:** ₹999 – ₹9,999 depending on complexity.\n\nReach out at **punitbadyal01@gmail.com** to discuss your project!",
+      "Here are **Punit's services with detailed pricing**:\n\n🎨 **Portfolio / Personal Website**\n→ ₹999 – ₹2,499 | Simple to animated, fully responsive\n\n🌐 **Frontend Web App (React.js)**\n→ ₹1,999 – ₹3,999 | SPA, dashboards, landing pages\n\n⚙️ **Full Stack Web Application**\n→ ₹3,999 – ₹6,999 | React + Node/Express + Database + APIs\n\n🔌 **REST API / Backend Development**\n→ ₹1,499 – ₹3,499 | Node.js / Express / Spring Boot\n\n🤖 **AI / ML Integration**\n→ ₹2,999 – ₹7,999 | Computer Vision, AI-powered features\n\n🖥️ **Admin Dashboard / Management System**\n→ ₹3,499 – ₹6,499 | Custom panels, analytics, CRUD\n\n🔧 **Bug Fixing / Code Review**\n→ ₹499 – ₹1,499 | Per session\n\n📦 **Custom Project (discuss scope)**\n→ ₹4,999 – ₹9,999+\n\n📧 Contact: **punitbadyal01@gmail.com** to get a custom quote!",
     ],
   },
   // ── Location ──
@@ -131,9 +166,10 @@ function fakeDelay(ms = 600) {
 
 const QUICK_SUGGESTIONS = [
   { label: '👤 About Punit', value: 'Tell me about Punit Badyal.' },
+  { label: '🎂 Age & DOB', value: 'What is Punit\'s date of birth and age?' },
   { label: '⚡ Skills', value: 'What are Punit\'s technical skills?' },
+  { label: '💰 Services & Pricing', value: 'What services does Punit offer and what are the prices?' },
   { label: '🚀 Projects', value: 'What projects has Punit built?' },
-  { label: '💼 Hire Me', value: 'How can I hire Punit or collaborate with him?' },
   { label: '📬 Contact', value: 'How can I contact Punit?' },
 ];
 

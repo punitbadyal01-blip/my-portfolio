@@ -14,6 +14,7 @@ import Projects from './components/Projects/Projects';
 import Certificates from './components/Certificates/Certificates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import Particles from './components/Particles/Particles';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -44,6 +45,9 @@ function App() {
 
   return (
     <div className="page-wrapper">
+      {/* Animated particles */}
+      <Particles />
+
       {/* Animated background blobs */}
       <div className="bg-blobs" aria-hidden="true">
         <div className="blob blob-1" />
