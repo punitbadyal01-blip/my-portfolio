@@ -3,12 +3,15 @@
 // ==============================================================
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { FaTimes, FaChevronLeft, FaChevronRight, FaExpand, FaAward } from 'react-icons/fa';
-import { certificatesData } from '../../data/data';
+import { certificatesData as staticCertificatesData } from '../../data/data';
+import { fetchCertificatesFromFirebase } from '../../utils/dataService';
 import './Certificates.css';
 
 const Certificates = () => {
     const sectionRef = useRef(null);
     const [lightbox, setLightbox] = useState(null); // index or null
+    const [certificates, setCertificates] = useState(staticCertificatesData);
+    const [loading, setLoading] = useState(true);
 
     /* Fade-in observer */
     useEffect(() => {
@@ -18,9 +21,29 @@ const Certificates = () => {
         );
         sectionRef.current?.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
         return () => observer.disconnect();
+    }, [certificates]);
+
+    // Fetch certificates from Firebase
+    useEffect(() => {
+        const loadCertificates = async () => {
+            try {
+                const firebaseCertificates = await fetchCertificatesFromFirebase();
+                // If Firebase has certificates, use them; otherwise use static data
+                if (firebaseCertificates.length > 0) {
+                    setCertificates(firebaseCertificates);
+                }
+            } catch (error) {
+                console.error('Error loading certificates:', error);
+                // Keep static data as fallback
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadCertificates();
     }, []);
 
-    const total = certificatesData.length;
+    const total = certificates.length;
     const prev = useCallback(() => setLightbox((i) => (i - 1 + total) % total), [total]);
     const next = useCallback(() => setLightbox((i) => (i + 1) % total), [total]);
     const close = useCallback(() => setLightbox(null), []);
@@ -56,7 +79,7 @@ const Certificates = () => {
 
                 {/* ── Masonry Grid ── */}
                 <div className="cert-grid">
-                    {certificatesData.map((cert, index) => (
+                    {certificates.map((cert, index) => (
                         <button
                             key={cert.id}
                             className="cert-tile fade-in"
@@ -114,7 +137,7 @@ const Certificates = () => {
                             <div className="cert-lightbox__img-wrap">
                                 <img
                                     key={lightbox}
-                                    src={certificatesData[lightbox].image}
+                                    src={certificates[lightbox].image}
                                     alt={`Certificate ${lightbox + 1}`}
                                     className="cert-lightbox__img"
                                 />
@@ -127,7 +150,7 @@ const Certificates = () => {
 
                         {/* Thumbnail strip */}
                         <div className="cert-lightbox__strip">
-                            {certificatesData.map((cert, i) => (
+                            {certificates.map((cert, i) => (
                                 <button
                                     key={cert.id}
                                     className={`cert-lightbox__thumb${i === lightbox ? ' active' : ''}`}

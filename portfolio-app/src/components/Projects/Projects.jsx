@@ -1,9 +1,10 @@
 // ==============================================================
 // Projects.jsx — Projects section with animated cards
 // ==============================================================
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
-import { projectsData } from '../../data/data';
+import { projectsData as staticProjectsData } from '../../data/data';
+import { fetchProjectsFromFirebase } from '../../utils/dataService';
 import './Projects.css';
 
 /**
@@ -90,7 +91,10 @@ const ProjectCard = ({ project, index }) => (
 
 const Projects = () => {
     const sectionRef = useRef(null);
+    const [projects, setProjects] = useState(staticProjectsData);
+    const [loading, setLoading] = useState(true);
 
+    // Fade-in observer
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => entries.forEach((e) => e.isIntersecting && e.target.classList.add('visible')),
@@ -98,6 +102,26 @@ const Projects = () => {
         );
         sectionRef.current?.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
         return () => observer.disconnect();
+    }, [projects]);
+
+    // Fetch projects from Firebase
+    useEffect(() => {
+        const loadProjects = async () => {
+            try {
+                const firebaseProjects = await fetchProjectsFromFirebase();
+                // If Firebase has projects, use them; otherwise use static data
+                if (firebaseProjects.length > 0) {
+                    setProjects(firebaseProjects);
+                }
+            } catch (error) {
+                console.error('Error loading projects:', error);
+                // Keep static data as fallback
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadProjects();
     }, []);
 
     return (
@@ -118,7 +142,7 @@ const Projects = () => {
 
                 {/* Cards grid */}
                 <div className="projects__grid">
-                    {projectsData.map((project, index) => (
+                    {projects.map((project, index) => (
                         <ProjectCard key={project.id} project={project} index={index} />
                     ))}
                 </div>

@@ -2,6 +2,7 @@
 // App.jsx — Root component for Punit Badyal's Portfolio
 // ==============================================================
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 
 // Section components
@@ -15,6 +16,7 @@ import Certificates from './components/Certificates/Certificates';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Particles from './components/Particles/Particles';
+import AdminPage from './components/Admin/AdminPage';
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -43,7 +45,7 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  return (
+  const PortfolioLayout = () => (
     <div className="page-wrapper">
       {/* Animated particles */}
       <Particles />
@@ -76,6 +78,15 @@ function App() {
       {/* ── Punit AI Chatbot ─────────────────────────────── */}
       <Chatbot />
     </div>
+  );
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<PortfolioLayout />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </Router>
   );
 }
 
