@@ -9,7 +9,7 @@
     right: 0;
     z-index: 1000;
     padding: 1rem 0;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     background: transparent;
 }
 
@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+    transition: gap 0.3s ease;
 }
 
 /* ---- LOGO ---- */
@@ -36,7 +37,14 @@
     text-decoration: none;
     letter-spacing: -0.02em;
     cursor: pointer;
-    transition: var(--transition);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar__logo:hover {
+    transform: scale(1.05);
 }
 
 .navbar__logo-bracket {
@@ -48,10 +56,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-}
-
-.navbar__logo:hover .navbar__logo-name {
-    animation: rotateGradient 2s ease infinite;
 }
 
 /* ---- DESKTOP NAV LINKS ---- */

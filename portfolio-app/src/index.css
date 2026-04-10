@@ -82,6 +82,21 @@ html {
   scroll-padding-top: 80px; /* Account for fixed navbar */
 }
 
+/* Mobile optimization */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+    scroll-padding-top: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+    scroll-padding-top: 50px;
+  }
+}
+
 body {
   font-family: var(--font-family);
   background-color: var(--bg-primary);
