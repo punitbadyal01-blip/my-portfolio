@@ -378,11 +378,8 @@
         font-size: 0.95rem;
     }
 }
-    background: var(--accent-primary);
-    flex-shrink: 0;
-}
 
-/* Mobile footer actions */
+/* Mobile footer */
 .navbar__mobile-footer {
     display: flex;
     align-items: center;
