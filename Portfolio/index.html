@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punit Badyal — Full Stack &amp; AI Developer | Portfolio</title>
+  <meta name="description" content="Portfolio of Punit Badyal — Full Stack Developer &amp; AI Engineer. Specialized in React.js, Python, OpenCV, and Spring Boot. CS Student at MKCE Karur." />
+  <meta name="keywords" content="Punit Badyal, Full Stack Developer, React.js Engineer, AI Developer, Python, Computer Vision, Portfolio, CS Student, MKCE Karur" />
+  <meta name="author" content="Punit Badyal" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Punit Badyal — Full Stack &amp; AI Developer" />
+  <meta property="og:description" content="Building scalable, user-centric software solutions with React.js, Python, and AI." />
+  <meta property="og:image" content="assets/images/profile.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%233B82F6'/><text x='50' y='65' font-size='50' font-weight='bold' fill='white' text-anchor='middle' font-family='sans-serif'>PB</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- Background Canvas & Effects -->
+  <canvas id="particles-canvas"></canvas>
+  <div class="bg-grid"></div>
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-logo">PB</div>
+    <div class="loading-bar"><div class="loading-bar-inner"></div></div>
+  </div>
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="navbar">
+    <div class="navbar__inner">
+      <a class="navbar__logo" href="#home">
+        <div class="navbar__logo-mark">PB</div>
+        <span>Punit<span class="navbar__logo-dot">.dev</span></span>
+      </a>
+
+      <nav class="navbar__nav">
+        <a class="navbar__link active" href="#home">Home</a>
+        <a class="navbar__link" href="#about">About</a>
+        <a class="navbar__link" href="#skills">Skills</a>
+        <a class="navbar__link" href="#services">Services</a>
+        <a class="navbar__link" href="#projects">Projects</a>
+        <a class="navbar__link" href="#certificates">Certificates</a>
+        <a class="navbar__link" href="#contact">Contact</a>
+      </nav>
+
+      <div class="navbar__actions">
+        <button id="theme-toggle-btn" class="theme-toggle" title="Toggle Dark/Light Mode">🌙</button>
+        <button id="admin-portal-btn" class="theme-toggle" title="Admin Dashboard">🔒</button>
+        <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
+        <button id="hamburger-btn" class="navbar__hamburger" aria-label="Toggle Mobile Menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <nav id="mobile-menu" class="navbar__mobile">
+    <a class="navbar__mobile-link active" href="#home" onclick="closeMobileMenu()">Home</a>
+    <a class="navbar__mobile-link" href="#about" onclick="closeMobileMenu()">About</a>
+    <a class="navbar__mobile-link" href="#skills" onclick="closeMobileMenu()">Skills</a>
+    <a class="navbar__mobile-link" href="#services" onclick="closeMobileMenu()">Services</a>
+    <a class="navbar__mobile-link" href="#projects" onclick="closeMobileMenu()">Projects</a>
+    <a class="navbar__mobile-link" href="#certificates" onclick="closeMobileMenu()">Certificates</a>
+    <a class="navbar__mobile-link" href="#contact" onclick="closeMobileMenu()">Contact</a>
+    <a href="#contact" class="btn btn-primary" style="margin-top:0.5rem;" onclick="closeMobileMenu()">Hire Me</a>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="home" class="home">
+      <div class="container">
+        <div class="home__wrapper">
+          <div class="home__left reveal">
+            <div class="home__avail">
+              <span class="home__avail-dot"></span> Available for Internships &amp; Opportunities
+            </div>
+            <h1 class="home__heading">
+              Hi, I'm<br /><span class="home__name-gradient">Punit Badyal</span>
+            </h1>
+            <div class="home__type-wrap">
+              <span>I'm a</span>
+              <span id="typewriter-text" class="home__type-text">Full Stack Developer</span>
+              <span class="home__cursor"></span>
+            </div>
+            <div class="home__tags">
+              <span class="home__tag">💻 CS Student</span>
+              <span class="home__tag">⚛️ React Dev</span>
+              <span class="home__tag">🤖 AI / ML Explorer</span>
+              <span class="home__tag">🇮🇳 India</span>
+            </div>
+            <p class="home__bio">
+              Passionate Computer Science student building innovative, scalable software solutions. Specialized in Full Stack Development with React.js &amp; Python. Turning complex ideas into elegant applications.
+            </p>
+            <div class="home__actions">
+              <a href="#contact" class="btn btn-primary btn-lg">🚀 Hire Me</a>
+              <a href="#projects" class="btn btn-outline btn-lg">View Projects →</a>
+              <button onclick="toggleChat()" class="btn btn-ghost btn-lg">💬 Ask AI</button>
+            </div>
+            <div class="home__socials">
+              <span class="home__social-label">Connect</span>
+              <span class="home__social-sep"></span>
+              <a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">🐙</a>
+              <a href="https://www.linkedin.com/in/punit-badyal-1b2935324" target="_blank" rel="noopener noreferrer" class="social-link" title="LinkedIn">💼</a>
+              <a href="mailto:punitbadyal01@gmail.com" class="social-link" title="Email">📧</a>
+            </div>
+            <div class="home__stats-strip">
+              <div><div class="home__stat-num" data-target="3">0</div><div class="home__stat-lbl">Projects Built</div></div>
+              <div><div class="home__stat-num" data-target="10">0</div><div class="home__stat-lbl">Certifications</div></div>
+              <div><div class="home__stat-num" data-target="2">0</div><div class="home__stat-lbl">Years Coding</div></div>
+            </div>
+          </div>
+
+          <!-- 3D Profile Photo Card -->
+          <div class="home__right reveal-right">
+            <div class="photo-scene">
+              <div class="float-chip float-chip-1">
+                <span class="float-chip-icon">⚛️</span>
+                <div><span class="float-chip-label">Currently</span><span class="float-chip-value">React.js</span></div>
+              </div>
+              <div class="float-chip float-chip-2">
+                <span class="float-chip-icon">🤖</span>
+                <div><span class="float-chip-label">Exploring</span><span class="float-chip-value">AI / ML</span></div>
+              </div>
+              <div class="float-chip float-chip-3">
+                <span class="float-chip-icon">🎓</span>
+                <div><span class="float-chip-label">College</span><span class="float-chip-value">MKC Engg.</span></div>
+              </div>
+              <div class="float-chip float-chip-4">
+                <span class="float-chip-icon">✅</span>
+                <div><span class="float-chip-label">Status</span><span class="float-chip-value">Open to Hire</span></div>
+              </div>
+
+              <div id="hero-photo-card" class="photo-card-3d">
+                <div class="photo-frame">
+                  <img src="assets/images/profile.jpg" alt="Punit Badyal Profile" class="photo-img" />
+                  <div class="photo-info-overlay">
+                    <p class="photo-name">Punit Badyal</p>
+                    <p class="photo-role">Full Stack &amp; AI Developer · India</p>
+                    <div class="photo-status"><span class="photo-status-dot"></span> Available to hire</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Who I Am</span>
+          <h2 class="section-title">About <span class="gradient-text">Me</span></h2>
+          <p class="section-desc">Passionate CS student from J&amp;K, building impactful software from the ground up.</p>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__card reveal-left">
+            <div class="about__avatar-wrap">
+              <img src="assets/images/profile.jpg" alt="Punit Badyal Avatar" class="about__avatar-img" />
+              <div class="about__avatar-status"></div>
+            </div>
+            <h3 class="about__card-name">Punit Badyal</h3>
+            <p class="about__card-role">Computer Science Engineering Student</p>
+
+            <div class="about__info-rows">
+              <div class="about__info-row"><span class="about__info-row-icon">📍</span> Jammu &amp; Kashmir, India</div>
+              <div class="about__info-row"><span class="about__info-row-icon">🏫</span> Karur, Tamil Nadu (Studies)</div>
+              <div class="about__info-row"><span class="about__info-row-icon">📚</span> 2nd Year · 4th Semester · CSE</div>
+              <div class="about__info-row"><span class="about__info-row-icon">🏛️</span> M.Kumarasamy College of Engg.</div>
+              <div class="about__info-row"><span class="about__info-row-icon">⚡</span> Full Stack + AI/ML Developer</div>
+              <div class="about__info-row"><span class="about__info-row-icon">💼</span> Open to Internships &amp; Remote</div>
+            </div>
+          </div>
+
+          <div class="about__blocks">
+            <div class="about__block reveal">
+              <div class="about__block-hdr">
+                <div class="about__block-icon">💻</div>
+                <h3 class="about__block-title">Hello! I'm Punit Badyal 👋</h3>
+              </div>
+              <p class="about__block-text">
+                A passionate and dedicated <strong>Computer Science Engineering student</strong> currently in my <strong>2nd Year (4th Semester)</strong> at <strong>M.Kumarasamy College of Engineering</strong>, Karur, Tamil Nadu.
+              </p>
+              <p class="about__block-text">
+                Originally from <strong>Jammu &amp; Kashmir</strong>, I moved to Tamil Nadu to pursue engineering. I love turning complex problems into elegant, user-centric solutions.
+              </p>
+            </div>
+
+            <div class="about__block reveal">
+              <div class="about__block-hdr">
+                <div class="about__block-icon">🎓</div>
+                <h3 class="about__block-title">Education Timeline</h3>
+              </div>
+              <div class="edu-timeline">
+                <div class="edu-entry">
+                  <div class="edu-dot"></div>
+                  <div>
+                    <p class="edu-degree">B.E. Computer Science Engineering</p>
+                    <p class="edu-school">M.Kumarasamy College of Engineering, Karur</p>
+                    <span class="edu-period">2024 – 2028 · 2nd Year</span>
+                  </div>
+                </div>
+                <div class="edu-entry">
+                  <div class="edu-dot"></div>
+                  <div>
+                    <p class="edu-degree">12th Grade — Higher Secondary</p>
+                    <p class="edu-school">Jammu &amp; Kashmir State Board</p>
+                    <span class="edu-period">2022 – 2024</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about__block reveal">
+              <div class="about__block-hdr">
+                <div class="about__block-icon">🚀</div>
+                <h3 class="about__block-title">Currently Learning &amp; Soft Skills</h3>
+              </div>
+              <div class="chips-row">
+                <span class="badge badge-blue">Advanced React</span>
+                <span class="badge badge-blue">Spring Boot</span>
+                <span class="badge badge-blue">AI / ML</span>
+                <span class="badge badge-blue">System Design</span>
+              </div>
+              <div class="soft-grid">
+                <div class="soft-item">🧩 Problem Solving</div>
+                <div class="soft-item">🤝 Collaboration</div>
+                <div class="soft-item">⚡ Quick Learner</div>
+                <div class="soft-item">🔄 Adaptability</div>
+                <div class="soft-item">💬 Communication</div>
+                <div class="soft-item">🚀 Leadership</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Expertise</span>
+          <h2 class="section-title">My <span class="gradient-text">Skills</span></h2>
+          <p class="section-desc">Technologies and tools I work with — from CS fundamentals to modern web frameworks.</p>
+        </div>
+
+        <div class="skills__tabs reveal">
+          <button class="skills__tab active" onclick="filterSkills('all', this)">All</button>
+          <button class="skills__tab" onclick="filterSkills('languages', this)">Languages</button>
+          <button class="skills__tab" onclick="filterSkills('frontend', this)">Frontend</button>
+          <button class="skills__tab" onclick="filterSkills('backend', this)">Backend</button>
+          <button class="skills__tab" onclick="filterSkills('ai', this)">AI / ML</button>
+          <button class="skills__tab" onclick="filterSkills('cs', this)">CS Core</button>
+          <button class="skills__tab" onclick="filterSkills('tools', this)">Tools</button>
+        </div>
+
+        <div class="skills__search reveal">
+          <span class="skills__search-icon">🔍</span>
+          <input type="search" id="skills-search-input" class="skills__search-input" placeholder="Search skills…" oninput="searchSkills(this.value)" />
+        </div>
+
+        <div id="skills-grid" class="skills__grid">
+          <!-- Dynamically Populated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">What I Offer</span>
+          <h2 class="section-title">Services &amp; <span class="gradient-text">Pricing</span></h2>
+          <p class="section-desc">High quality web and AI solutions tailored to your requirements.</p>
+        </div>
+
+        <div class="services__grid">
+          <div class="service-card reveal-scale">
+            <div class="service-icon">🎨</div>
+            <h3 class="service-title">Portfolio / Website</h3>
+            <div class="service-price">₹999 – ₹2,499</div>
+            <p class="service-desc">Custom responsive portfolio or landing page with modern glassmorphism UI &amp; fast performance.</p>
+            <div class="service-features">
+              <div class="service-feature">✓ Glassmorphism UI &amp; Dark Mode</div>
+              <div class="service-feature">✓ Fully Responsive &amp; Animated</div>
+              <div class="service-feature">✓ Contact Form &amp; SEO setup</div>
+            </div>
+            <a href="#contact" class="btn btn-outline btn-sm">Get Quote</a>
+          </div>
+
+          <div class="service-card reveal-scale">
+            <div class="service-icon">🌐</div>
+            <h3 class="service-title">Frontend Web App</h3>
+            <div class="service-price">₹1,999 – ₹3,999</div>
+            <p class="service-desc">Interactive React.js web application with modern state management, smooth routing, &amp; clean code.</p>
+            <div class="service-features">
+              <div class="service-feature">✓ React.js &amp; Modern JS</div>
+              <div class="service-feature">✓ Dynamic Components &amp; Hooks</div>
+              <div class="service-feature">✓ API Integration</div>
+            </div>
+            <a href="#contact" class="btn btn-outline btn-sm">Get Quote</a>
+          </div>
+
+          <div class="service-card reveal-scale">
+            <div class="service-icon">⚙️</div>
+            <h3 class="service-title">Full Stack App</h3>
+            <div class="service-price">₹3,999 – ₹6,999</div>
+            <p class="service-desc">End-to-end full stack web application with React frontend, Node/Python backend &amp; database.</p>
+            <div class="service-features">
+              <div class="service-feature">✓ Full Database Architecture</div>
+              <div class="service-feature">✓ User Auth &amp; Dashboard</div>
+              <div class="service-feature">✓ Deployment Included</div>
+            </div>
+            <a href="#contact" class="btn btn-primary btn-sm">Get Quote</a>
+          </div>
+
+          <div class="service-card reveal-scale">
+            <div class="service-icon">🤖</div>
+            <h3 class="service-title">AI / ML Integration</h3>
+            <div class="service-price">₹2,999 – ₹7,999</div>
+            <p class="service-desc">Computer vision systems, OpenCV gesture controls, image processing, &amp; OpenAI chatbot integrations.</p>
+            <div class="service-features">
+              <div class="service-feature">✓ Real-time Computer Vision</div>
+              <div class="service-feature">✓ Custom AI Assistant Integration</div>
+              <div class="service-feature">✓ Python Backend APIs</div>
+            </div>
+            <a href="#contact" class="btn btn-outline btn-sm">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">My Work</span>
+          <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+          <p class="section-desc">Real-world applications I've built — from AI-powered systems to full-stack web apps.</p>
+        </div>
+
+        <div class="projects__filters reveal">
+          <button class="projects__filter-btn active" onclick="filterProjects('All', this)">All</button>
+          <button class="projects__filter-btn" onclick="filterProjects('Python', this)">Python</button>
+          <button class="projects__filter-btn" onclick="filterProjects('React.js', this)">React.js</button>
+          <button class="projects__filter-btn" onclick="filterProjects('JavaScript', this)">JavaScript</button>
+        </div>
+
+        <div id="projects-grid" class="projects__grid">
+          <!-- Dynamically Populated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES SECTION -->
+    <section id="certificates" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Credentials</span>
+          <h2 class="section-title">My <span class="gradient-text">Certificates</span></h2>
+          <p class="section-desc">Professional certifications earned across programming, web development, and AI.</p>
+        </div>
+
+        <div class="certs__controls reveal">
+          <div class="certs__tabs">
+            <button class="certs__tab active" onclick="filterCerts('All', this)">All</button>
+            <button class="certs__tab" onclick="filterCerts('Udemy', this)">Udemy</button>
+            <button class="certs__tab" onclick="filterCerts('freeCodeCamp', this)">freeCodeCamp</button>
+            <button class="certs__tab" onclick="filterCerts('Coursera', this)">Coursera</button>
+            <button class="certs__tab" onclick="filterCerts('OpenCV University', this)">OpenCV</button>
+            <button class="certs__tab" onclick="filterCerts('Google Developers', this)">Google</button>
+          </div>
+          <div class="certs__search">
+            <input type="search" class="certs__search-input" placeholder="Search certificates…" oninput="searchCerts(this.value)" />
+          </div>
+        </div>
+
+        <div id="certs-grid" class="certs__grid">
+          <!-- Dynamically Populated by script.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Get In Touch</span>
+          <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+          <p class="section-desc">Open to internships, collaborations, and freelance projects. Let's build something great together.</p>
+        </div>
+
+        <div class="contact__grid">
+          <div class="contact__info reveal-left">
+            <h3>Open to exciting opportunities &amp; collaborations 🚀</h3>
+            <p style="color: var(--text-secondary); margin-top: 0.75rem;">
+              Whether you have a project idea, an internship opportunity, or just want to say hi — my inbox is always open.
+            </p>
+
+            <div class="contact__cards">
+              <a href="mailto:punitbadyal01@gmail.com" class="contact__card">
+                <div class="contact__card-icon">📧</div>
+                <div><div class="contact__card-label">Email</div><div class="contact__card-value">punitbadyal01@gmail.com</div></div>
+              </a>
+              <a href="https://wa.me/917780886857" target="_blank" rel="noopener noreferrer" class="contact__card">
+                <div class="contact__card-icon">💬</div>
+                <div><div class="contact__card-label">WhatsApp</div><div class="contact__card-value">+91 7780886857</div></div>
+              </a>
+              <a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer" class="contact__card">
+                <div class="contact__card-icon">🐙</div>
+                <div><div class="contact__card-label">GitHub</div><div class="contact__card-value">punitbadyal01-blip</div></div>
+              </a>
+              <a href="https://www.linkedin.com/in/punit-badyal-1b2935324" target="_blank" rel="noopener noreferrer" class="contact__card">
+                <div class="contact__card-icon">💼</div>
+                <div><div class="contact__card-label">LinkedIn</div><div class="contact__card-value">punit-badyal-1b2935324</div></div>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact__form-card reveal-right">
+            <form id="contact-form" class="contact__form" onsubmit="handleContactSubmit(event)">
+              <div id="form-success-banner" class="form-success" style="display:none;">
+                ✅ Message sent! Thanks for reaching out! I'll reply soon. 🎉
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Name *</label>
+                  <input id="contact-name" class="form-input" type="text" placeholder="Your Name" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Email *</label>
+                  <input id="contact-email" class="form-input" type="email" placeholder="you@email.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-subject">Subject *</label>
+                <input id="contact-subject" class="form-input" type="text" placeholder="What's this about?" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Message *</label>
+                <textarea id="contact-message" class="form-textarea" placeholder="Tell me about your project or opportunity!" maxlength="1000" oninput="updateCharCount(this)" required></textarea>
+                <div style="text-align:right; font-size:0.75rem; color:var(--text-muted); margin-top:0.2rem;">
+                  <span id="msg-char-count">0</span>/1000
+                </div>
+              </div>
+
+              <button type="submit" id="contact-submit-btn" class="btn btn-primary form-submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div>
+        <div class="footer__logo">
+          <div class="footer__logo-mark">PB</div>
+          <span>Punit Badyal</span>
+        </div>
+        <p class="footer__tagline">
+          Full Stack Developer &amp; AI Enthusiast. Building scalable, user-centric applications that solve real problems.
+        </p>
+        <div class="footer__social">
+          <a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer" class="social-link">🐙</a>
+          <a href="https://www.linkedin.com/in/punit-badyal-1b2935324" target="_blank" rel="noopener noreferrer" class="social-link">💼</a>
+          <a href="mailto:punitbadyal01@gmail.com" class="social-link">📧</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer__section-title">Navigation</p>
+        <div class="footer__links">
+          <a href="#home" class="footer__link">Home</a>
+          <a href="#about" class="footer__link">About</a>
+          <a href="#skills" class="footer__link">Skills</a>
+          <a href="#services" class="footer__link">Services</a>
+          <a href="#projects" class="footer__link">Projects</a>
+          <a href="#certificates" class="footer__link">Certificates</a>
+          <a href="#contact" class="footer__link">Contact</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="footer__section-title">Contact</p>
+        <div class="footer__links">
+          <a href="mailto:punitbadyal01@gmail.com" class="footer__link">📧 punitbadyal01@gmail.com</a>
+          <a href="https://wa.me/917780886857" target="_blank" rel="noopener noreferrer" class="footer__link">📱 +91 7780886857</a>
+          <a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer" class="footer__link">🐙 punitbadyal01-blip</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p>© 2026 <strong>Punit Badyal</strong>. All rights reserved.</p>
+      <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="back-to-top">Back to Top ↑</button>
+    </div>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div id="project-modal" class="modal-overlay" onclick="if(event.target===this)closeProjectModal()">
+    <div class="modal">
+      <img id="modal-img" src="" alt="" class="modal__image" />
+      <div class="modal__body">
+        <div class="modal__header">
+          <h3 id="modal-title" class="modal__title"></h3>
+          <button onclick="closeProjectModal()" class="modal__close">✕</button>
+        </div>
+        <p id="modal-desc" style="color:var(--text-secondary); line-height:1.6;"></p>
+        <div>
+          <p style="font-size:0.85rem; font-weight:700; color:var(--text-muted); margin-bottom:0.5rem;">Tech Stack</p>
+          <div id="modal-tags" style="display:flex; flex-wrap:wrap; gap:0.4rem;"></div>
+        </div>
+        <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+          <a id="modal-github" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Code</a>
+          <a id="modal-demo" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Live Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CERTIFICATE MODAL -->
+  <div id="cert-modal" class="modal-overlay" onclick="if(event.target===this)closeCertModal()">
+    <div class="modal">
+      <img id="cert-modal-img" src="" alt="" class="modal__image" />
+      <div class="modal__body">
+        <div class="modal__header">
+          <h3 id="cert-modal-title" class="modal__title"></h3>
+          <button onclick="closeCertModal()" class="modal__close">✕</button>
+        </div>
+        <p id="cert-modal-issuer" style="color:var(--color-accent); font-weight:700;"></p>
+        <p id="cert-modal-desc" style="color:var(--text-secondary); line-height:1.6;"></p>
+        <div style="display:flex; gap:0.75rem;">
+          <a id="cert-modal-download" href="#" download class="btn btn-primary btn-sm">Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATBOT -->
+  <button id="chatbot-trigger" class="chatbot-trigger" onclick="toggleChat()" title="Chat with Punit AI">
+    💬
+    <span class="trigger-badge">AI</span>
+  </button>
+
+  <div id="chatbot-window" class="chatbot-window">
+    <div class="chat-header">
+      <div class="chat-header__profile">
+        <div class="chat-header__avatar">
+          <img src="assets/images/profile.jpg" alt="Punit AI Avatar" />
+          <span class="chat-header__online"></span>
+        </div>
+        <div>
+          <p class="chat-header__name">Punit AI</p>
+          <p class="chat-header__subtitle">Online · Intelligent Assistant</p>
+        </div>
+      </div>
+      <button onclick="toggleChat()" style="color:var(--text-muted); font-size:1.2rem;">✕</button>
+    </div>
+
+    <div id="chat-messages" class="chat-messages">
+      <div class="chat-message bot">
+        <div class="chat-bubble bot">
+          Hello! I'm <strong>Punit AI</strong> 👋 — your guide to <strong>Punit Badyal</strong>.<br /><br />
+          Ask me about his skills, projects, age, services, pricing, or how to hire him!
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-suggestions">
+      <button class="suggestion-chip" onclick="sendChatMsg('Tell me about Punit Badyal')">👤 About</button>
+      <button class="suggestion-chip" onclick="sendChatMsg('What are Punit technical skills?')">⚡ Skills</button>
+      <button class="suggestion-chip" onclick="sendChatMsg('What projects has Punit built?')">🚀 Projects</button>
+      <button class="suggestion-chip" onclick="sendChatMsg('What services and pricing does Punit offer?')">💰 Services</button>
+      <button class="suggestion-chip" onclick="sendChatMsg('How can I contact Punit?')">📬 Contact</button>
+    </div>
+
+    <div class="chat-input-area">
+      <div class="chat-input-row">
+        <input id="chat-input" class="chat-input" type="text" placeholder="Ask anything about Punit…" onkeydown="if(event.key==='Enter')sendChatMsg()" />
+        <button class="chat-send-btn" onclick="sendChatMsg()">➤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD MODAL -->
+  <div id="admin-modal" class="admin-modal">
+    <div class="admin-container">
+      <!-- Admin Sidebar -->
+      <div class="admin-sidebar">
+        <div>
+          <div style="font-size:1.25rem; font-weight:800; color:var(--text-primary); margin-bottom:1.8rem; display:flex; align-items:center; gap:0.5rem;">
+            <span>⚡</span> Punit Admin
+          </div>
+          <button id="admin-nav-dash" class="admin-nav-btn active" onclick="switchAdminTab('dash', this)">📊 Overview</button>
+          <button id="admin-nav-projects" class="admin-nav-btn" onclick="switchAdminTab('projects', this)">📁 Projects</button>
+          <button id="admin-nav-certs" class="admin-nav-btn" onclick="switchAdminTab('certs', this)">📜 Certificates</button>
+          <button id="admin-nav-skills" class="admin-nav-btn" onclick="switchAdminTab('skills', this)">⚡ Skills</button>
+          <button id="admin-nav-messages" class="admin-nav-btn" onclick="switchAdminTab('messages', this)">📬 Messages <span id="admin-msg-badge" class="badge badge-purple" style="margin-left:auto;">0</span></button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.5rem;">
+          <button onclick="adminLogout()" id="admin-logout-btn" class="btn btn-outline btn-sm" style="display:none; color:var(--color-error); border-color:rgba(239,68,68,0.3);">🚪 Sign Out</button>
+          <button onclick="closeAdminModal()" class="btn btn-outline btn-sm">✕ Close</button>
+        </div>
+      </div>
+
+      <!-- Admin Content Panel -->
+      <div class="admin-content">
+        <!-- Auth Screen -->
+        <div id="admin-login-screen">
+          <h2 style="font-size:1.6rem; font-weight:800; margin-bottom:0.4rem;">Admin Control Center</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1.75rem;">Enter security key to manage live portfolio data.</p>
+          <div style="max-width:320px;">
+            <input type="password" id="admin-pass-input" class="form-input" placeholder="Enter Password" onkeydown="if(event.key==='Enter')checkAdminAuth()" style="margin-bottom:1rem;" />
+            <button onclick="checkAdminAuth()" class="btn btn-primary" style="width:100%;">Sign In →</button>
+            <div id="admin-auth-error" style="color:var(--color-error); font-size:0.85rem; margin-top:0.75rem; display:none; text-align:center;">
+              ⚠️ Incorrect password. Try again!
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Views Container -->
+        <div id="admin-main-views" style="display:none;">
+
+          <!-- Tab 1: Overview -->
+          <div id="admin-view-dash" class="admin-tab-view">
+            <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:0.4rem;">System Overview</h2>
+            <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Live analytics and portfolio statistics.</p>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:1.25rem; margin-bottom:2rem;">
+              <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+                <div id="admin-stat-projects" style="font-size:2rem; font-weight:800; color:var(--color-primary);">0</div>
+                <div style="font-size:0.85rem; color:var(--text-muted);">Active Projects</div>
+              </div>
+              <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+                <div id="admin-stat-certs" style="font-size:2rem; font-weight:800; color:var(--color-accent);">0</div>
+                <div style="font-size:0.85rem; color:var(--text-muted);">Certificates</div>
+              </div>
+              <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+                <div id="admin-stat-skills" style="font-size:2rem; font-weight:800; color:var(--color-cyan);">0</div>
+                <div style="font-size:0.85rem; color:var(--text-muted);">Listed Skills</div>
+              </div>
+              <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+                <div id="admin-stat-messages" style="font-size:2rem; font-weight:800; color:var(--color-success);">0</div>
+                <div style="font-size:0.85rem; color:var(--text-muted);">Form Inquiries</div>
+              </div>
+            </div>
+
+            <div style="background:var(--bg-card); padding:1.5rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+              <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">Quick Actions</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
+                <button onclick="switchAdminTab('projects')" class="btn btn-outline btn-sm">➕ Add New Project</button>
+                <button onclick="switchAdminTab('certs')" class="btn btn-outline btn-sm">📜 Add Certificate</button>
+                <button onclick="switchAdminTab('skills')" class="btn btn-outline btn-sm">⚡ Add Skill</button>
+                <button onclick="switchAdminTab('messages')" class="btn btn-outline btn-sm">📬 View Inbox</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Projects Manager -->
+          <div id="admin-view-projects" class="admin-tab-view" style="display:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+              <div>
+                <h2 style="font-size:1.5rem; font-weight:800;">Projects Manager</h2>
+                <p style="color:var(--text-secondary); font-size:0.9rem;">Add, edit or remove portfolio projects.</p>
+              </div>
+            </div>
+
+            <!-- Add Project Form -->
+            <form onsubmit="adminAddProject(event)" style="background:var(--bg-card); padding:1.5rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem;">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:1rem;">Add New Project</h3>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="proj-title-input" class="form-input" type="text" placeholder="Project Title *" required />
+                <input id="proj-tech-input" class="form-input" type="text" placeholder="Tech Stack (comma separated: React.js, Python, OpenCV) *" required />
+              </div>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="proj-img-input" class="form-input" type="text" placeholder="Image URL / Path (e.g. assets/images/project-watermark.png) *" required />
+                <input id="proj-github-input" class="form-input" type="text" placeholder="GitHub URL" value="https://github.com/punitbadyal01-blip" />
+              </div>
+              <textarea id="proj-desc-input" class="form-textarea" placeholder="Short Description *" style="min-height:80px; margin-bottom:1rem;" required></textarea>
+              <button type="submit" class="btn btn-primary btn-sm">🚀 Publish Project</button>
+            </form>
+
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">Existing Projects</h3>
+            <div id="admin-projects-list" style="display:flex; flex-direction:column; gap:0.85rem;"></div>
+          </div>
+
+          <!-- Tab 3: Certificates Manager -->
+          <div id="admin-view-certs" class="admin-tab-view" style="display:none;">
+            <div style="margin-bottom:1.5rem;">
+              <h2 style="font-size:1.5rem; font-weight:800;">Certificates Manager</h2>
+              <p style="color:var(--text-secondary); font-size:0.9rem;">Manage professional credentials &amp; certificates.</p>
+            </div>
+
+            <!-- Add Certificate Form -->
+            <form onsubmit="adminAddCert(event)" style="background:var(--bg-card); padding:1.5rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem;">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:1rem;">Add New Certificate</h3>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="cert-title-input" class="form-input" type="text" placeholder="Certificate Title *" required />
+                <input id="cert-issuer-input" class="form-input" type="text" placeholder="Issuer (e.g. Udemy, Coursera, freeCodeCamp) *" required />
+              </div>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="cert-img-input" class="form-input" type="text" placeholder="Certificate Image Path/URL *" required />
+                <input id="cert-date-input" class="form-input" type="text" placeholder="Year / Date (e.g. 2025) *" required />
+              </div>
+              <textarea id="cert-desc-input" class="form-textarea" placeholder="Description *" style="min-height:80px; margin-bottom:1rem;" required></textarea>
+              <button type="submit" class="btn btn-primary btn-sm">📜 Publish Certificate</button>
+            </form>
+
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">Existing Certificates</h3>
+            <div id="admin-certs-list" style="display:flex; flex-direction:column; gap:0.85rem;"></div>
+          </div>
+
+          <!-- Tab 4: Skills Manager -->
+          <div id="admin-view-skills" class="admin-tab-view" style="display:none;">
+            <div style="margin-bottom:1.5rem;">
+              <h2 style="font-size:1.5rem; font-weight:800;">Skills Manager</h2>
+              <p style="color:var(--text-secondary); font-size:0.9rem;">Add, edit &amp; rate technical skill proficiencies.</p>
+            </div>
+
+            <form onsubmit="adminAddSkill(event)" style="background:var(--bg-card); padding:1.5rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem;">
+              <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:1rem;">Add Skill</h3>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="skill-name-input" class="form-input" type="text" placeholder="Skill Name *" required />
+                <select id="skill-cat-input" class="form-input" required>
+                  <option value="languages">Languages</option>
+                  <option value="frontend">Frontend</option>
+                  <option value="backend">Backend</option>
+                  <option value="ai">AI / ML</option>
+                  <option value="cs">CS Core</option>
+                  <option value="tools">Tools</option>
+                </select>
+              </div>
+              <div class="form-row" style="margin-bottom:1rem;">
+                <input id="skill-icon-input" class="form-input" type="text" placeholder="Emoji Icon (e.g. ⚡, 🐍, ⚛️) *" required />
+                <input id="skill-level-input" class="form-input" type="number" min="1" max="5" placeholder="Proficiency (1-5) *" required />
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm">⚡ Add Skill</button>
+            </form>
+
+            <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:1rem;">Current Skills</h3>
+            <div id="admin-skills-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(220px, 1fr)); gap:0.85rem;"></div>
+          </div>
+
+          <!-- Tab 5: Messages Inbox -->
+          <div id="admin-view-messages" class="admin-tab-view" style="display:none;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
+              <div>
+                <h2 style="font-size:1.5rem; font-weight:800;">Contact Form Inbox</h2>
+                <p style="color:var(--text-secondary); font-size:0.9rem;">Messages submitted through your portfolio contact form.</p>
+              </div>
+              <button onclick="adminClearMessages()" class="btn btn-outline btn-sm" style="color:var(--color-error);">🗑️ Clear Inbox</button>
+            </div>
+
+            <div id="admin-messages-list" style="display:flex; flex-direction:column; gap:1rem;"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Application Bundle -->
+  <script src="script.js"></script>
+</body>
+</html>
