@@ -21,7 +21,7 @@ const DEFAULT_PROJECTS = [
     description: 'A modern web-based courier booking and tracking interface with clean UI, real-time status updates, and intuitive dashboard.',
     longDescription: 'Full-stack web application for booking and tracking courier services. Features booking forms, tracking dashboards, dynamic order status, and responsive UI design.',
     image: 'assets/images/project-courier-service.png',
-    technologies: ['React.js', 'JavaScript', 'CSS3', 'HTML5'],
+    technologies: ['Java', 'JavaScript', 'CSS3', 'HTML5'],
     github: 'https://github.com/punitbadyal01-blip',
     demo: '#',
     featured: true
@@ -30,9 +30,9 @@ const DEFAULT_PROJECTS = [
     id: 3,
     title: 'Image Watermark Adder',
     description: 'Web app allowing users to upload images and apply customizable text watermarks with options for font, size, opacity, and position.',
-    longDescription: 'Adds customizable watermarks using Python backend & React frontend with HTML5 Canvas API for quick batch image protection.',
+    longDescription: 'Adds customizable watermarks using Python backend & Web frontend with HTML5 Canvas API for quick batch image protection.',
     image: 'assets/images/project-watermark.png',
-    technologies: ['React.js', 'Python', 'JavaScript', 'Canvas API', 'CSS3'],
+    technologies: ['Java', 'Python', 'JavaScript', 'Canvas API', 'CSS3'],
     github: 'https://github.com/punitbadyal01-blip',
     demo: '#',
     featured: false
@@ -42,7 +42,7 @@ const DEFAULT_PROJECTS = [
 const DEFAULT_CERTS = [
   { id: 1, title: 'Java Programming Masterclass', issuer: 'Udemy', description: 'Comprehensive Java course covering core concepts, OOP principles, collections, streams, multithreading, and Java 17+.', date: '2024', image: 'assets/images/cert-java.jpg' },
   { id: 2, title: 'Python Bootcamp — Zero to Hero', issuer: 'Udemy', description: 'Complete Python programming covering fundamentals, data structures, file handling, OOP, NumPy & Pandas.', date: '2024', image: 'assets/images/cert-python.jpg' },
-  { id: 3, title: 'React.js — The Complete Guide', issuer: 'Udemy', description: 'In-depth React.js course covering components, hooks, state management, React Router, and Redux.', date: '2025', image: 'assets/images/cert-react.jpg' },
+  { id: 3, title: 'Java & Spring Boot Masterclass', issuer: 'Udemy', description: 'In-depth Java & Spring Boot course covering microservices, JPA, Hibernate, REST APIs, and Security.', date: '2025', image: 'assets/images/cert-react.jpg' },
   { id: 4, title: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp', description: 'Mastered JavaScript fundamentals, ES6+ features, functional programming, OOP, and data structures.', date: '2024', image: 'assets/images/cert-js-algo.jpg' },
   { id: 5, title: 'Responsive Web Design', issuer: 'freeCodeCamp', description: 'Built responsive websites using modern HTML5, CSS3, Flexbox, Grid, and accessibility best practices.', date: '2024', image: 'assets/images/cert-responsive.jpg' },
   { id: 6, title: 'Machine Learning with Python', issuer: 'Coursera', description: 'Applied machine learning techniques including supervised & unsupervised learning, regression, and classification.', date: '2025', image: 'assets/images/cert-ml.jpg' },
@@ -53,11 +53,11 @@ const DEFAULT_CERTS = [
 ];
 
 const DEFAULT_SKILLS = [
-  { name: 'Java', cat: 'languages', level: 4, icon: '☕' },
+  { name: 'Java', cat: 'languages', level: 5, icon: '☕' },
   { name: 'Python', cat: 'languages', level: 4, icon: '🐍' },
   { name: 'JavaScript', cat: 'languages', level: 4, icon: '⚡' },
   { name: 'C Programming', cat: 'languages', level: 3, icon: '⚙️' },
-  { name: 'React.js', cat: 'frontend', level: 4, icon: '⚛️' },
+  { name: 'Spring Boot', cat: 'backend', level: 4, icon: '🍃' },
   { name: 'HTML5', cat: 'frontend', level: 5, icon: '🌐' },
   { name: 'CSS3', cat: 'frontend', level: 4, icon: '🎨' },
   { name: 'Spring Boot', cat: 'backend', level: 3, icon: '🍃' },
@@ -158,7 +158,7 @@ function animateCounters() {
 }
 
 // ── TYPEWRITER ANIMATION ───────────────────────────────────────
-const roles = ['Full Stack Developer', 'React.js Engineer', 'AI / ML Explorer', 'CS Student @ MKC', 'Problem Solver'];
+const roles = ['Full Stack Developer', 'Java Developer', 'AI / ML Explorer', 'CS Student @ MKCE', 'Problem Solver'];
 let roleIdx = 0, charIdx = 0, isDeleting = false;
 const typeEl = document.getElementById('typewriter-text');
 
@@ -503,9 +503,9 @@ function toggleChat() {
 
 const KB = [
   { pattern: /hi|hello|hey|greetings/i, reply: "Hello! 👋 I'm **Punit AI**! How can I help you explore Punit Badyal's portfolio today?" },
-  { pattern: /about|who is punit/i, reply: "**Punit Badyal** is a Full Stack & AI Developer and 2nd-year CSE student at M.Kumarasamy College of Engineering, Karur (originally from J&K, India)." },
-  { pattern: /skills|tech/i, reply: "**Punit's Core Skills:** React.js, Python, Java, OpenCV, MediaPipe, Spring Boot, HTML5/CSS3, JavaScript, DSA, DBMS." },
-  { pattern: /projects|built/i, reply: "**Featured Projects:**\n1. AI Hand Gesture Control Game (Python/OpenCV)\n2. Courier Management System (React)\n3. Image Watermark Adder (Canvas API)" },
+  { pattern: /about|who is punit/i, reply: "**Punit Badyal** is a Full Stack & AI Developer and 3rd-year (5th Semester) CSE student at M.Kumarasamy College of Engineering, Karur (MKCE)." },
+  { pattern: /skills|tech/i, reply: "**Punit's Core Skills:** Java, Spring Boot, Python, OpenCV, MediaPipe, HTML5/CSS3, JavaScript, DSA, DBMS." },
+  { pattern: /projects|built/i, reply: "**Featured Projects:**\n1. AI Hand Gesture Control Game (Python/OpenCV)\n2. Courier Management System (Java/JS)\n3. Image Watermark Adder (Canvas API)" },
   { pattern: /contact|email|phone/i, reply: "📧 **Email:** punitbadyal01@gmail.com\n📱 **Phone:** +91 7780886857\n🐙 **GitHub:** github.com/punitbadyal01-blip" },
   { pattern: /pricing|services|cost/i, reply: "💰 **Services:**\n• Portfolio Website: ₹999 – ₹2,499\n• Frontend App: ₹1,999 – ₹3,999\n• Full Stack App: ₹3,999 – ₹6,999\n• AI/ML Integration: ₹2,999 – ₹7,999" }
 ];
@@ -515,6 +515,11 @@ function sendChatMsg(customText) {
   const text = customText || (input ? input.value.trim() : '');
   if (!text) return;
   if (!customText && input) input.value = '';
+
+  // Secret admin trigger via chat
+  if (text.toLowerCase() === '/pb' || text.toLowerCase() === 'ctrlshiftpb') {
+    openSecretAdmin();
+  }
 
   const chatMsgs = document.getElementById('chat-messages');
   if (!chatMsgs) return;
@@ -535,10 +540,14 @@ function sendChatMsg(customText) {
   setTimeout(() => {
     chatMsgs.removeChild(typingDiv);
     let replyText = "For detailed questions, contact Punit directly at **punitbadyal01@gmail.com**! 😊";
-    for (const item of KB) {
-      if (item.pattern.test(text)) {
-        replyText = item.reply;
-        break;
+    if (text.toLowerCase() === '/pb' || text.toLowerCase() === 'ctrlshiftpb') {
+      replyText = "🔒 **Opening Secret Admin Portal...**";
+    } else {
+      for (const item of KB) {
+        if (item.pattern.test(text)) {
+          replyText = item.reply;
+          break;
+        }
       }
     }
     const botDiv = document.createElement('div');
@@ -549,13 +558,72 @@ function sendChatMsg(customText) {
   }, 600);
 }
 
-// ── FULL ADMIN DASHBOARD LOGIC & FUNCTIONS ────────────────────
-const adminBtn = document.getElementById('admin-portal-btn');
-if (adminBtn) {
-  adminBtn.addEventListener('click', () => {
-    const adminModal = document.getElementById('admin-modal');
-    if (adminModal) adminModal.classList.add('open');
-  });
+// ── SECRET ADMIN DASHBOARD LOGIC & TRIGGERS ───────────────────
+function openSecretAdmin() {
+  const adminModal = document.getElementById('admin-modal');
+  if (adminModal) adminModal.classList.add('open');
+}
+
+// 1. Secret keyboard shortcut: Ctrl + Shift + P followed by B (Ctrl+Shift+P+B)
+let lastPTime = 0;
+window.addEventListener('keydown', (e) => {
+  const key = e.key.toLowerCase();
+
+  // Detect Ctrl + Shift + P
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && key === 'p') {
+    e.preventDefault();
+    lastPTime = Date.now();
+  }
+
+  // Detect B after Ctrl + Shift + P (or while Ctrl + Shift are held)
+  if (key === 'b') {
+    if ((Date.now() - lastPTime < 2500 && lastPTime > 0) || ((e.ctrlKey || e.metaKey) && e.shiftKey && lastPTime > 0)) {
+      e.preventDefault();
+      openSecretAdmin();
+      lastPTime = 0;
+    }
+  }
+});
+
+// 2. Secret typed keyword sequence listener: typing "pb" or "ctrlshiftpb" or "admin" on page
+let secretKeyBuffer = '';
+window.addEventListener('keyup', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  secretKeyBuffer += e.key.toLowerCase();
+  if (secretKeyBuffer.length > 15) secretKeyBuffer = secretKeyBuffer.substring(secretKeyBuffer.length - 15);
+  if (secretKeyBuffer.endsWith('ctrlshiftpb') || secretKeyBuffer.endsWith('secretpb')) {
+    openSecretAdmin();
+    secretKeyBuffer = '';
+  }
+});
+
+// 3. Secret URL Hash check & listener (e.g. index.html#pb or index.html#admin)
+function checkHashTrigger() {
+  if (window.location.hash === '#admin' || window.location.hash === '#pb' || window.location.hash === '#secret') {
+    setTimeout(openSecretAdmin, 200);
+  }
+}
+checkHashTrigger();
+window.addEventListener('hashchange', checkHashTrigger);
+
+// 4. Secret Mobile 3-Tap Gesture on Logo (Punit.dev)
+const logoEl = document.querySelector('.navbar__logo');
+if (logoEl) {
+  let logoTaps = 0;
+  let logoTapTimer;
+  const handleLogoTap = (e) => {
+    logoTaps++;
+    clearTimeout(logoTapTimer);
+    if (logoTaps >= 3) {
+      e.preventDefault();
+      openSecretAdmin();
+      logoTaps = 0;
+    } else {
+      logoTapTimer = setTimeout(() => { logoTaps = 0; }, 800);
+    }
+  };
+  logoEl.addEventListener('click', handleLogoTap);
+  logoEl.addEventListener('touchend', handleLogoTap);
 }
 
 function closeAdminModal() {
@@ -564,12 +632,14 @@ function closeAdminModal() {
 }
 
 function checkAdminAuth() {
-  const pass = document.getElementById('admin-pass-input').value;
+  const passEl = document.getElementById('admin-pass-input');
+  const pass = passEl ? passEl.value : '';
   if (pass === 'admin123') {
     localStorage.setItem('punit_admin_auth', 'true');
     showAdminDashboard();
   } else {
-    document.getElementById('admin-auth-error').style.display = 'block';
+    const errEl = document.getElementById('admin-auth-error');
+    if (errEl) errEl.style.display = 'block';
   }
 }
 
@@ -580,18 +650,31 @@ function restoreAdminSession() {
 }
 
 function showAdminDashboard() {
-  document.getElementById('admin-login-screen').style.display = 'none';
-  document.getElementById('admin-main-views').style.display = 'block';
-  document.getElementById('admin-logout-btn').style.display = 'inline-flex';
+  const loginScreen = document.getElementById('admin-login-screen');
+  if (loginScreen) loginScreen.style.display = 'none';
+
+  const mainViews = document.getElementById('admin-main-views');
+  if (mainViews) mainViews.style.display = 'block';
+
+  const logoutBtn = document.getElementById('admin-logout-btn');
+  if (logoutBtn) logoutBtn.style.display = 'inline-flex';
+
   refreshAdminViews();
 }
 
 function adminLogout() {
   localStorage.removeItem('punit_admin_auth');
-  document.getElementById('admin-login-screen').style.display = 'block';
-  document.getElementById('admin-main-views').style.display = 'none';
-  document.getElementById('admin-logout-btn').style.display = 'none';
-  document.getElementById('admin-pass-input').value = '';
+  const loginScreen = document.getElementById('admin-login-screen');
+  if (loginScreen) loginScreen.style.display = 'block';
+
+  const mainViews = document.getElementById('admin-main-views');
+  if (mainViews) mainViews.style.display = 'none';
+
+  const logoutBtn = document.getElementById('admin-logout-btn');
+  if (logoutBtn) logoutBtn.style.display = 'none';
+
+  const passEl = document.getElementById('admin-pass-input');
+  if (passEl) passEl.value = '';
 }
 
 function switchAdminTab(tabName, btn) {
@@ -606,12 +689,15 @@ function switchAdminTab(tabName, btn) {
 }
 
 function refreshAdminViews() {
-  // Update stats counters
-  document.getElementById('admin-stat-projects').innerText = PROJECTS_DATA.length;
-  document.getElementById('admin-stat-certs').innerText = CERTS_DATA.length;
-  document.getElementById('admin-stat-skills').innerText = SKILLS_DATA.length;
-  document.getElementById('admin-stat-messages').innerText = MESSAGES_DATA.length;
-  document.getElementById('admin-msg-badge').innerText = MESSAGES_DATA.length;
+  // Update stats counters & badges safely
+  const pStat = document.getElementById('admin-stat-projects'); if (pStat) pStat.innerText = PROJECTS_DATA.length;
+  const pBadge = document.getElementById('admin-stat-projects-badge'); if (pBadge) pBadge.innerText = PROJECTS_DATA.length;
+  const cStat = document.getElementById('admin-stat-certs'); if (cStat) cStat.innerText = CERTS_DATA.length;
+  const cBadge = document.getElementById('admin-stat-certs-badge'); if (cBadge) cBadge.innerText = CERTS_DATA.length;
+  const sStat = document.getElementById('admin-stat-skills'); if (sStat) sStat.innerText = SKILLS_DATA.length;
+  const sBadge = document.getElementById('admin-stat-skills-badge'); if (sBadge) sBadge.innerText = SKILLS_DATA.length;
+  const mStat = document.getElementById('admin-stat-messages'); if (mStat) mStat.innerText = MESSAGES_DATA.length;
+  const mBadge = document.getElementById('admin-msg-badge'); if (mBadge) mBadge.innerText = MESSAGES_DATA.length;
 
   // Render Projects Admin List
   const projList = document.getElementById('admin-projects-list');
