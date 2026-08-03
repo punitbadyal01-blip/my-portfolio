@@ -523,6 +523,7 @@ const KB = [
   { pattern: /skills|tech/i, reply: "**Punit's Core Skills:** Java, Spring Boot, Python, OpenCV, MediaPipe, HTML5/CSS3, JavaScript, DSA, DBMS." },
   { pattern: /projects|built/i, reply: "**Featured Projects:**\n1. AI Hand Gesture Control Game (Python/OpenCV)\n2. Courier Management System (Java/JS)\n3. Image Watermark Adder (Canvas API)" },
   { pattern: /contact|email|phone/i, reply: "📧 **Email:** punitbadyal01@gmail.com\n📱 **Phone:** +91 7780886857\n🐙 **GitHub:** github.com/punitbadyal01-blip" },
+  { pattern: /resume|cv|download/i, reply: "📄 You can download Punit Badyal's official Resume here: <a href='assets/images/Punit_Badyal_Resume.pdf' download target='_blank' style='color:#FFFFFF; text-decoration:underline; font-weight:bold;'>Download Punit_Badyal_Resume.pdf</a>" },
   { pattern: /pricing|services|cost/i, reply: "💰 **Services:**\n• Portfolio Website: ₹999 – ₹2,499\n• Frontend App: ₹1,999 – ₹3,999\n• Full Stack App: ₹3,999 – ₹6,999\n• AI/ML Integration: ₹2,999 – ₹7,999" }
 ];
 
