@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Punit Badyal — Full Stack &amp; AI Developer | Portfolio</title>
-  <meta name="description" content="Portfolio of Punit Badyal — Full Stack Developer &amp; AI Engineer. Specialized in Java, Spring Boot, Python, and OpenCV. CS Student at MKCE Karur." />
-  <meta name="keywords" content="Punit Badyal, Full Stack Developer, Java Engineer, Java Developer, AI Developer, Python, Computer Vision, Portfolio, CS Student, MKCE Karur" />
+  <meta name="description" content="Portfolio of Punit Badyal — Full Stack Developer &amp; AI Engineer. Specialized in React.js, Python, OpenCV, and Spring Boot. CS Student at MKCE Karur." />
+  <meta name="keywords" content="Punit Badyal, Full Stack Developer, React.js Engineer, AI Developer, Python, Computer Vision, Portfolio, CS Student, MKCE Karur" />
   <meta name="author" content="Punit Badyal" />
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Punit Badyal — Full Stack &amp; AI Developer" />
-  <meta property="og:description" content="Building scalable, user-centric software solutions with Java, Spring Boot, Python, and AI." />
+  <meta property="og:description" content="Building scalable, user-centric software solutions with React.js, Python, and AI." />
   <meta property="og:image" content="assets/images/profile.jpg" />
 
   <!-- Favicon -->
@@ -62,6 +62,7 @@
 
       <div class="navbar__actions">
         <button id="theme-toggle-btn" class="theme-toggle" title="Toggle Dark/Light Mode">🌙</button>
+        <button id="admin-portal-btn" class="theme-toggle" title="Admin Dashboard">🔒</button>
         <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
         <button id="hamburger-btn" class="navbar__hamburger" aria-label="Toggle Mobile Menu">
           <span class="hamburger-bar"></span>
@@ -108,7 +109,7 @@
               <span class="home__tag">🇮🇳 India</span>
             </div>
             <p class="home__bio">
-              Passionate Computer Science student building innovative, scalable software solutions. Specialized in Full Stack Development with Java, Spring Boot &amp; Python. Turning complex ideas into elegant Web applications.
+              Passionate Computer Science student building innovative, scalable software solutions. Specialized in Full Stack Development with React.js &amp; Python. Turning complex ideas into elegant Web applications.
             </p>
             <div class="home__actions">
               <a href="#contact" class="btn btn-primary btn-lg">🚀 Hire Me</a>
@@ -314,9 +315,9 @@
             <div class="service-icon">🌐</div>
             <h3 class="service-title">Frontend Web App</h3>
             <div class="service-price">₹1,999 – ₹3,999</div>
-            <p class="service-desc">Interactive Java &amp; Web application with modern state management, smooth routing, &amp; clean code.</p>
+            <p class="service-desc">Interactive React.js web application with modern state management, smooth routing, &amp; clean code.</p>
             <div class="service-features">
-              <div class="service-feature">✓ Java &amp; Modern Web Tech</div>
+              <div class="service-feature">✓ React.js &amp; Modern JS</div>
               <div class="service-feature">✓ Dynamic Components &amp; Hooks</div>
               <div class="service-feature">✓ API Integration</div>
             </div>
@@ -327,7 +328,7 @@
             <div class="service-icon">⚙️</div>
             <h3 class="service-title">Full Stack App</h3>
             <div class="service-price">₹3,999 – ₹6,999</div>
-            <p class="service-desc">End-to-end full stack web application with Java &amp; Spring Boot backend, modern frontend &amp; database.</p>
+            <p class="service-desc">End-to-end full stack web application with React frontend, Node/Python backend &amp; database.</p>
             <div class="service-features">
               <div class="service-feature">✓ Full Database Architecture</div>
               <div class="service-feature">✓ User Auth &amp; Dashboard</div>
@@ -614,210 +615,41 @@
     <div class="admin-container">
       <div class="admin-sidebar">
         <div>
-          <div class="admin-sidebar-header">⚡ Punit Admin</div>
-          <button id="admin-nav-dash" class="admin-nav-btn active" onclick="switchAdminTab('dash', this)">
-            <span class="admin-nav-title">📊 Dashboard</span>
-          </button>
-          <button id="admin-nav-projects" class="admin-nav-btn" onclick="switchAdminTab('projects', this)">
-            <span class="admin-nav-title">📁 Projects</span>
-            <span id="admin-stat-projects-badge" class="admin-nav-pill">3</span>
-          </button>
-          <button id="admin-nav-certs" class="admin-nav-btn" onclick="switchAdminTab('certs', this)">
-            <span class="admin-nav-title">📜 Certificates</span>
-            <span id="admin-stat-certs-badge" class="admin-nav-pill">10</span>
-          </button>
-          <button id="admin-nav-skills" class="admin-nav-btn" onclick="switchAdminTab('skills', this)">
-            <span class="admin-nav-title">⚡ Skills</span>
-            <span id="admin-stat-skills-badge" class="admin-nav-pill">20</span>
-          </button>
-          <button id="admin-nav-messages" class="admin-nav-btn" onclick="switchAdminTab('messages', this)">
-            <span class="admin-nav-title">📬 Inbox</span>
-            <span id="admin-msg-badge" class="admin-nav-pill warning">0</span>
-          </button>
+          <div style="font-size:1.2rem; font-weight:800; color:var(--text-primary); margin-bottom:1.5rem;">⚡ Punit Admin</div>
+          <button class="admin-nav-btn active" onclick="switchAdminTab('dash', this)">📊 Dashboard</button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('projects', this)">📁 Projects</button>
+          <button class="admin-nav-btn" onclick="switchAdminTab('certs', this)">📜 Certificates</button>
         </div>
-        <div>
-          <button id="admin-logout-btn" onclick="adminLogout()" class="btn btn-outline btn-sm" style="width:100%; margin-bottom:0.5rem; display:none; color:var(--color-error); border-color:rgba(239,68,68,0.3);">🔒 Logout</button>
-          <button onclick="closeAdminModal()" class="btn btn-primary btn-sm" style="width:100%;">🚪 Close</button>
-        </div>
+        <button onclick="closeAdminModal()" class="btn btn-outline btn-sm">🚪 Close Admin</button>
       </div>
 
       <div class="admin-content">
-        <!-- LOGIN VIEW -->
         <div id="admin-login-screen">
-          <div style="max-width:380px; margin:2rem auto; text-align:center;">
-            <div style="font-size:2.5rem; margin-bottom:0.5rem;">🔒</div>
-            <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem;">Admin Sign In</h2>
-            <p style="color:var(--text-secondary); margin-bottom:1.5rem; font-size:0.9rem;">Enter password to access admin controls &amp; manage portfolio content.</p>
-            <form onsubmit="event.preventDefault(); checkAdminAuth();">
-              <input type="password" id="admin-pass-input" class="form-input" placeholder="Password (admin123)" style="margin-bottom:1rem; text-align:center;" required />
-              <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">Sign In to Dashboard</button>
-            </form>
-            <div id="admin-auth-error" style="color:var(--color-error); font-size:0.85rem; margin-top:0.75rem; display:none;">⚠️ Incorrect password. Try again.</div>
-          </div>
+          <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem;">Admin Sign In</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Enter password to access admin controls.</p>
+          <input type="password" id="admin-pass-input" class="form-input" placeholder="Password (admin123)" style="max-width:300px; margin-bottom:1rem;" />
+          <button onclick="checkAdminAuth()" class="btn btn-primary">Sign In</button>
+          <div id="admin-auth-error" style="color:var(--color-error); font-size:0.85rem; margin-top:0.5rem; display:none;">Incorrect password</div>
         </div>
 
-        <!-- AUTHENTICATED VIEWS WRAPPER -->
-        <div id="admin-main-views" style="display:none;">
+        <div id="admin-dashboard-view" style="display:none;">
+          <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:0.5rem;">Dashboard Overview</h2>
+          <p style="color:var(--text-secondary); margin-bottom:1.5rem;">Welcome back, Punit! Manage portfolio content.</p>
 
-          <!-- DASHBOARD TAB VIEW -->
-          <div id="admin-view-dash" class="admin-tab-view">
-            <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem;">Dashboard Overview</h2>
-            <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:1.5rem;">Welcome back, Punit! Real-time portfolio stats &amp; management.</p>
-
-            <div class="admin-stat-grid">
-              <div class="admin-stat-card">
-                <div class="admin-stat-icon">📁</div>
-                <div>
-                  <div id="admin-stat-projects" class="admin-stat-number">3</div>
-                  <div class="admin-stat-label">Projects Live</div>
-                </div>
-              </div>
-              <div class="admin-stat-card">
-                <div class="admin-stat-icon accent">📜</div>
-                <div>
-                  <div id="admin-stat-certs" class="admin-stat-number accent">10</div>
-                  <div class="admin-stat-label">Certificates</div>
-                </div>
-              </div>
-              <div class="admin-stat-card">
-                <div class="admin-stat-icon success">⚡</div>
-                <div>
-                  <div id="admin-stat-skills" class="admin-stat-number success">20</div>
-                  <div class="admin-stat-label">Skills Listed</div>
-                </div>
-              </div>
-              <div class="admin-stat-card">
-                <div class="admin-stat-icon warning">📬</div>
-                <div>
-                  <div id="admin-stat-messages" class="admin-stat-number warning">0</div>
-                  <div class="admin-stat-label">Inbox Messages</div>
-                </div>
-              </div>
+          <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:1rem; margin-bottom:2rem;">
+            <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+              <div style="font-size:1.8rem; font-weight:800; color:var(--color-primary);">3+</div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">Projects Live</div>
             </div>
-
-            <div class="admin-section-box">
-              <h3 class="admin-box-title">⚡ Quick Management Actions</h3>
-              <div class="admin-quick-actions">
-                <button class="admin-action-btn" onclick="switchAdminTab('projects')">
-                  <span class="admin-action-icon">📁</span>
-                  <div>
-                    <div class="admin-action-name">Add New Project</div>
-                    <div class="admin-action-sub">Upload projects &amp; details</div>
-                  </div>
-                </button>
-                <button class="admin-action-btn" onclick="switchAdminTab('certs')">
-                  <span class="admin-action-icon accent">📜</span>
-                  <div>
-                    <div class="admin-action-name">Add Certificate</div>
-                    <div class="admin-action-sub">Manage credentials</div>
-                  </div>
-                </button>
-                <button class="admin-action-btn" onclick="switchAdminTab('skills')">
-                  <span class="admin-action-icon success">⚡</span>
-                  <div>
-                    <div class="admin-action-name">Add Skill</div>
-                    <div class="admin-action-sub">Update tech stack</div>
-                  </div>
-                </button>
-                <button class="admin-action-btn" onclick="switchAdminTab('messages')">
-                  <span class="admin-action-icon warning">📬</span>
-                  <div>
-                    <div class="admin-action-name">View Inbox Messages</div>
-                    <div class="admin-action-sub">Check visitor inquiries</div>
-                  </div>
-                </button>
-              </div>
+            <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+              <div style="font-size:1.8rem; font-weight:800; color:var(--color-accent);">10+</div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">Certificates</div>
+            </div>
+            <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color);">
+              <div style="font-size:1.8rem; font-weight:800; color:var(--color-success);">2+</div>
+              <div style="font-size:0.85rem; color:var(--text-muted);">Yrs Learning</div>
             </div>
           </div>
-
-          <!-- PROJECTS TAB VIEW -->
-          <div id="admin-view-projects" class="admin-tab-view" style="display:none;">
-            <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem;">Projects Manager</h2>
-            <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:1.5rem;">Add new projects or remove existing ones in real-time.</p>
-
-            <form onsubmit="adminAddProject(event)" style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem; display:flex; flex-direction:column; gap:0.75rem;">
-              <h3 style="font-size:1rem; font-weight:700;">➕ Add New Project</h3>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="proj-title-input" class="form-input" placeholder="Project Title *" required />
-                <input type="text" id="proj-tech-input" class="form-input" placeholder="Tech Stack (e.g. Java, Spring Boot) *" required />
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="proj-img-input" class="form-input" placeholder="Image URL (e.g. assets/images/project-hand-gesture.png) *" required />
-                <input type="url" id="proj-github-input" class="form-input" placeholder="GitHub Repository URL" />
-              </div>
-              <textarea id="proj-desc-input" class="form-textarea" placeholder="Project Summary *" rows="2" required></textarea>
-              <button type="submit" class="btn btn-primary btn-sm" style="align-self:flex-start;">Save Project</button>
-            </form>
-
-            <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Existing Projects</h3>
-            <div id="admin-projects-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
-          </div>
-
-          <!-- CERTS TAB VIEW -->
-          <div id="admin-view-certs" class="admin-tab-view" style="display:none;">
-            <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem;">Certificates Manager</h2>
-            <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:1.5rem;">Manage professional certifications shown on your portfolio.</p>
-
-            <form onsubmit="adminAddCert(event)" style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem; display:flex; flex-direction:column; gap:0.75rem;">
-              <h3 style="font-size:1rem; font-weight:700;">📜 Add New Certificate</h3>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="cert-title-input" class="form-input" placeholder="Certificate Title *" required />
-                <input type="text" id="cert-issuer-input" class="form-input" placeholder="Issuer (e.g. Udemy, Coursera) *" required />
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="cert-img-input" class="form-input" placeholder="Image URL *" required />
-                <input type="text" id="cert-date-input" class="form-input" placeholder="Year / Date (e.g. 2025) *" required />
-              </div>
-              <textarea id="cert-desc-input" class="form-textarea" placeholder="Certificate Description *" rows="2" required></textarea>
-              <button type="submit" class="btn btn-primary btn-sm" style="align-self:flex-start;">Save Certificate</button>
-            </form>
-
-            <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Existing Certificates</h3>
-            <div id="admin-certs-list" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
-          </div>
-
-          <!-- SKILLS TAB VIEW -->
-          <div id="admin-view-skills" class="admin-tab-view" style="display:none;">
-            <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem;">Skills Manager</h2>
-            <p style="color:var(--text-secondary); font-size:0.88rem; margin-bottom:1.5rem;">Add or remove skills displayed in your technical skills grid.</p>
-
-            <form onsubmit="adminAddSkill(event)" style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-lg); border:1px solid var(--border-color); margin-bottom:2rem; display:flex; flex-direction:column; gap:0.75rem;">
-              <h3 style="font-size:1rem; font-weight:700;">⚡ Add New Skill</h3>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="skill-name-input" class="form-input" placeholder="Skill Name (e.g. Java) *" required />
-                <select id="skill-cat-input" class="form-select" style="background:var(--bg-secondary); border:1px solid var(--border-color); color:var(--text-primary); padding:0.85rem 1.1rem; border-radius:var(--radius-md);" required>
-                  <option value="languages">Languages</option>
-                  <option value="frontend">Frontend</option>
-                  <option value="backend">Backend</option>
-                  <option value="ai">AI / ML</option>
-                  <option value="cs">CS Core</option>
-                  <option value="tools">Tools</option>
-                </select>
-              </div>
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem;">
-                <input type="text" id="skill-icon-input" class="form-input" placeholder="Icon Emoji (e.g. ☕) *" required />
-                <input type="number" id="skill-level-input" class="form-input" placeholder="Proficiency (1 to 5) *" min="1" max="5" required />
-              </div>
-              <button type="submit" class="btn btn-primary btn-sm" style="align-self:flex-start;">Add Skill</button>
-            </form>
-
-            <h3 style="font-size:1rem; font-weight:700; margin-bottom:0.75rem;">Current Skills</h3>
-            <div id="admin-skills-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(160px, 1fr)); gap:0.75rem;"></div>
-          </div>
-
-          <!-- MESSAGES TAB VIEW -->
-          <div id="admin-view-messages" class="admin-tab-view" style="display:none;">
-            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;">
-              <div>
-                <h2 style="font-size:1.4rem; font-weight:800; margin-bottom:0.25rem;">Contact Inbox Messages</h2>
-                <p style="color:var(--text-secondary); font-size:0.88rem;">Messages sent from visitors via your contact form.</p>
-              </div>
-              <button onclick="adminClearMessages()" class="btn btn-outline btn-sm" style="color:var(--color-error); border-color:rgba(239,68,68,0.3);">🗑️ Clear All</button>
-            </div>
-
-            <div id="admin-messages-list" style="display:flex; flex-direction:column; gap:1rem;"></div>
-          </div>
-
         </div>
       </div>
     </div>
