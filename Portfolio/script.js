@@ -1,5 +1,5 @@
 /* ============================================================
-   script.js — Punit Badyal Portfolio 3D Spatial Engine & Complete Admin Logic
+   script.js — Punit Badyal Portfolio Spatial Engine & Admin Logic
    ============================================================ */
 
 // ── INITIAL DATA STORES ──────────────────────────────────────
@@ -60,7 +60,6 @@ const DEFAULT_SKILLS = [
   { name: 'Spring Boot', cat: 'backend', level: 4, icon: '🍃' },
   { name: 'HTML5', cat: 'frontend', level: 5, icon: '🌐' },
   { name: 'CSS3', cat: 'frontend', level: 4, icon: '🎨' },
-  { name: 'Spring Boot', cat: 'backend', level: 3, icon: '🍃' },
   { name: 'Node.js', cat: 'backend', level: 3, icon: '🟩' },
   { name: 'Firebase', cat: 'backend', level: 4, icon: '🔥' },
   { name: 'OpenCV', cat: 'ai', level: 3, icon: '👁️' },
@@ -103,6 +102,12 @@ window.addEventListener('load', () => {
   }, 600);
   init3DTiltEngine();
   restoreAdminSession();
+
+  // Attach Admin Portal Nav Button Listener
+  const adminBtn = document.getElementById('admin-portal-btn');
+  if (adminBtn) {
+    adminBtn.addEventListener('click', openSecretAdmin);
+  }
 });
 
 // ── SCROLL PROGRESS BAR & NAVBAR GLASS EFFECT ─────────────────
@@ -123,7 +128,7 @@ window.addEventListener('scroll', () => {
   const sections = document.querySelectorAll('section');
   let current = 'home';
   sections.forEach(sec => {
-    if (sec.getBoundingClientRect().top - 120 <= 0) current = sec.id;
+    if (sec.getBoundingClientRect().top - 140 <= 0) current = sec.id;
   });
   document.querySelectorAll('.navbar__link').forEach(link => {
     link.classList.toggle('active', link.getAttribute('href') === '#' + current);
@@ -203,13 +208,13 @@ function init3DTiltEngine() {
   });
 }
 
-// ── REAL 3D CANVAS PERSPECTIVE PARTICLE SYSTEM ───────────────
+// ── MONOCHROME 3D CANVAS PARTICLE SYSTEM ──────────────────────
 const canvas = document.getElementById('particles-canvas');
 if (canvas) {
   const ctx = canvas.getContext('2d');
   let width, height;
   let particles = [];
-  const numParticles = 60;
+  const numParticles = 65;
   const fov = 350;
   let mouseX = 0, mouseY = 0;
 
@@ -262,7 +267,7 @@ if (canvas) {
       return { px, py, scale, p };
     });
 
-    // Draw connecting lines in 3D
+    // Draw connecting lines in B&W Monochrome
     for (let i = 0; i < projected.length; i++) {
       for (let j = i + 1; j < projected.length; j++) {
         const p1 = projected[i];
@@ -272,20 +277,20 @@ if (canvas) {
           ctx.beginPath();
           ctx.moveTo(p1.px, p1.py);
           ctx.lineTo(p2.px, p2.py);
-          ctx.strokeStyle = `rgba(96, 165, 250, ${0.15 * (1 - dist / 130)})`;
+          ctx.strokeStyle = `rgba(220, 220, 220, ${0.15 * (1 - dist / 130)})`;
           ctx.lineWidth = 0.8;
           ctx.stroke();
         }
       }
     }
 
-    // Draw 3D projected particle nodes
+    // Draw 3D projected B&W particle nodes
     projected.forEach(item => {
       ctx.beginPath();
       ctx.arc(item.px, item.py, Math.max(0.5, item.p.radius * item.scale), 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(139, 92, 246, ${Math.min(0.8, item.scale * 0.7)})`;
-      ctx.shadowColor = '#3B82F6';
-      ctx.shadowBlur = 8;
+      ctx.fillStyle = `rgba(255, 255, 255, ${Math.min(0.8, item.scale * 0.7)})`;
+      ctx.shadowColor = '#FFFFFF';
+      ctx.shadowBlur = 6;
       ctx.fill();
       ctx.shadowBlur = 0;
     });
@@ -332,13 +337,13 @@ function renderProjects(list) {
     <div class="project-card reveal visible" onclick="openProjectModal(${p.id})">
       <div class="project-card__image">
         <img src="${p.image}" alt="${p.title}" />
-        ${p.featured ? '<span class="project-card__featured-pill">⭐ Featured 3D</span>' : ''}
+        ${p.featured ? '<span class="project-card__featured-pill">⭐ Featured</span>' : ''}
       </div>
       <div class="project-card__body">
         <h3 class="project-card__title">${p.title}</h3>
         <p class="project-card__desc">${p.description}</p>
         <div class="project-card__tags">
-          ${p.technologies.slice(0,3).map(t => `<span class="badge badge-slate">${t}</span>`).join('')}
+          ${p.technologies.slice(0,4).map(t => `<span class="badge badge-blue">${t}</span>`).join('')}
         </div>
       </div>
       <div class="project-card__footer">
@@ -388,7 +393,7 @@ function renderCerts(list) {
       </div>
       <div class="cert-card__footer">
         <span>📅 ${c.date}</span>
-        <span style="color:var(--color-accent); font-weight:700;">View →</span>
+        <span style="color:var(--text-primary); font-weight:700;">View →</span>
       </div>
     </div>
   `).join('');
@@ -423,6 +428,17 @@ function closeCertModal() {
   const modal = document.getElementById('cert-modal');
   if (modal) modal.classList.remove('open');
 }
+
+// ── KEYBOARD ESCAPE KEY LISTENER ─────────────────────────────
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeProjectModal();
+    closeCertModal();
+    closeAdminModal();
+    const win = document.getElementById('chatbot-window');
+    if (win && win.classList.contains('open')) win.classList.remove('open');
+  }
+});
 
 // ── CONTACT FORM VALIDATION & SUBMISSION ───────────────────────
 function updateCharCount(el) {
@@ -564,67 +580,14 @@ function openSecretAdmin() {
   if (adminModal) adminModal.classList.add('open');
 }
 
-// 1. Secret keyboard shortcut: Ctrl + Shift + P followed by B (Ctrl+Shift+P+B)
-let lastPTime = 0;
+// Secret keyboard shortcut: Ctrl + Shift + A
 window.addEventListener('keydown', (e) => {
   const key = e.key.toLowerCase();
-
-  // Detect Ctrl + Shift + P
-  if ((e.ctrlKey || e.metaKey) && e.shiftKey && key === 'p') {
+  if ((e.ctrlKey || e.metaKey) && e.shiftKey && key === 'a') {
     e.preventDefault();
-    lastPTime = Date.now();
-  }
-
-  // Detect B after Ctrl + Shift + P (or while Ctrl + Shift are held)
-  if (key === 'b') {
-    if ((Date.now() - lastPTime < 2500 && lastPTime > 0) || ((e.ctrlKey || e.metaKey) && e.shiftKey && lastPTime > 0)) {
-      e.preventDefault();
-      openSecretAdmin();
-      lastPTime = 0;
-    }
-  }
-});
-
-// 2. Secret typed keyword sequence listener: typing "pb" or "ctrlshiftpb" or "admin" on page
-let secretKeyBuffer = '';
-window.addEventListener('keyup', (e) => {
-  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-  secretKeyBuffer += e.key.toLowerCase();
-  if (secretKeyBuffer.length > 15) secretKeyBuffer = secretKeyBuffer.substring(secretKeyBuffer.length - 15);
-  if (secretKeyBuffer.endsWith('ctrlshiftpb') || secretKeyBuffer.endsWith('secretpb')) {
     openSecretAdmin();
-    secretKeyBuffer = '';
   }
 });
-
-// 3. Secret URL Hash check & listener (e.g. index.html#pb or index.html#admin)
-function checkHashTrigger() {
-  if (window.location.hash === '#admin' || window.location.hash === '#pb' || window.location.hash === '#secret') {
-    setTimeout(openSecretAdmin, 200);
-  }
-}
-checkHashTrigger();
-window.addEventListener('hashchange', checkHashTrigger);
-
-// 4. Secret Mobile 3-Tap Gesture on Logo (Punit.dev)
-const logoEl = document.querySelector('.navbar__logo');
-if (logoEl) {
-  let logoTaps = 0;
-  let logoTapTimer;
-  const handleLogoTap = (e) => {
-    logoTaps++;
-    clearTimeout(logoTapTimer);
-    if (logoTaps >= 3) {
-      e.preventDefault();
-      openSecretAdmin();
-      logoTaps = 0;
-    } else {
-      logoTapTimer = setTimeout(() => { logoTaps = 0; }, 800);
-    }
-  };
-  logoEl.addEventListener('click', handleLogoTap);
-  logoEl.addEventListener('touchend', handleLogoTap);
-}
 
 function closeAdminModal() {
   const adminModal = document.getElementById('admin-modal');
@@ -703,7 +666,7 @@ function refreshAdminViews() {
   const projList = document.getElementById('admin-projects-list');
   if (projList) {
     projList.innerHTML = PROJECTS_DATA.map(p => `
-      <div style="background:var(--bg-secondary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-space-between; gap:1rem;">
+      <div style="background:var(--bg-card); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between; gap:1rem;">
         <img src="${p.image}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
         <div style="flex-grow:1;">
           <div style="font-weight:700; font-size:0.95rem;">${p.title}</div>
@@ -718,11 +681,11 @@ function refreshAdminViews() {
   const certsList = document.getElementById('admin-certs-list');
   if (certsList) {
     certsList.innerHTML = CERTS_DATA.map(c => `
-      <div style="background:var(--bg-secondary); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-space-between; gap:1rem;">
+      <div style="background:var(--bg-card); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between; gap:1rem;">
         <img src="${c.image}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
         <div style="flex-grow:1;">
           <div style="font-weight:700; font-size:0.95rem;">${c.title}</div>
-          <div style="font-size:0.78rem; color:var(--color-accent);">${c.issuer} · ${c.date}</div>
+          <div style="font-size:0.78rem; color:var(--text-muted);">${c.issuer} · ${c.date}</div>
         </div>
         <button onclick="adminDeleteCert(${c.id})" class="btn btn-outline btn-sm" style="color:var(--color-error); border-color:rgba(239,68,68,0.3);">🗑️ Delete</button>
       </div>
@@ -733,7 +696,7 @@ function refreshAdminViews() {
   const skillsList = document.getElementById('admin-skills-list');
   if (skillsList) {
     skillsList.innerHTML = SKILLS_DATA.map(s => `
-      <div style="background:var(--bg-secondary); padding:0.75rem 1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between;">
+      <div style="background:var(--bg-card); padding:0.75rem 1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between;">
         <div style="display:flex; align-items:center; gap:0.5rem;">
           <span>${s.icon}</span>
           <span style="font-weight:700; font-size:0.88rem;">${s.name}</span>
@@ -750,9 +713,9 @@ function refreshAdminViews() {
       msgList.innerHTML = `<p style="color:var(--text-muted); text-align:center; padding:2rem;">No messages in inbox yet.</p>`;
     } else {
       msgList.innerHTML = MESSAGES_DATA.map(m => `
-        <div style="background:var(--bg-secondary); padding:1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; flex-direction:column; gap:0.5rem;">
+        <div style="background:var(--bg-card); padding:1.25rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; flex-direction:column; gap:0.5rem;">
           <div style="display:flex; align-items:center; justify-content:space-between;">
-            <div style="font-weight:800; font-size:1rem; color:var(--color-primary);">${m.name} <span style="font-weight:400; font-size:0.82rem; color:var(--text-muted);">(${m.email})</span></div>
+            <div style="font-weight:800; font-size:1rem; color:var(--text-primary);">${m.name} <span style="font-weight:400; font-size:0.82rem; color:var(--text-muted);">(${m.email})</span></div>
             <span style="font-size:0.75rem; color:var(--text-muted);">${m.date}</span>
           </div>
           <div style="font-weight:700; font-size:0.9rem;">Subject: ${m.subject}</div>
