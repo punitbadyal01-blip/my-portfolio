@@ -89,8 +89,41 @@ function setStoredData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-let PROJECTS_DATA = getStoredData('punit_projects', DEFAULT_PROJECTS);
-let CERTS_DATA = getStoredData('punit_certs', DEFAULT_CERTS);
+function normalizeMediaPath(value, fallback = '') {
+  if (!value || typeof value !== 'string') return fallback;
+
+  let normalized = value.trim();
+  if (!normalized) return fallback;
+
+  if (/^(https?:)?\/\//i.test(normalized) || normalized.startsWith('data:') || normalized.startsWith('blob:')) {
+    return normalized;
+  }
+
+  normalized = normalized.replace(/\\/g, '/');
+
+  const assetsMatch = normalized.match(/(?:^|\/)(assets\/[^?#]+)$/i);
+  if (assetsMatch) {
+    normalized = assetsMatch[1];
+  }
+
+  if (/^[a-zA-Z]:\//.test(normalized)) {
+    const fallbackMatch = normalized.match(/\/assets\/[^?#]+$/i);
+    normalized = fallbackMatch ? fallbackMatch[0].replace(/^\/+/, '') : normalized.replace(/^[a-zA-Z]:\//, '').replace(/^\/+/, '');
+  }
+
+  if (normalized.startsWith('/')) {
+    normalized = normalized.replace(/^\/+/, '');
+  }
+
+  try {
+    return new URL(normalized, window.location.href).href;
+  } catch (error) {
+    return normalized;
+  }
+}
+
+let PROJECTS_DATA = getStoredData('punit_projects', DEFAULT_PROJECTS).map(p => ({ ...p, image: normalizeMediaPath(p.image) }));
+let CERTS_DATA = getStoredData('punit_certs', DEFAULT_CERTS).map(c => ({ ...c, image: normalizeMediaPath(c.image) }));
 let SKILLS_DATA = getStoredData('punit_skills', DEFAULT_SKILLS);
 let MESSAGES_DATA = getStoredData('punit_messages', []);
 
@@ -333,10 +366,12 @@ function searchSkills(q) {
 function renderProjects(list) {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
-  grid.innerHTML = list.map(p => `
+  grid.innerHTML = list.map(p => {
+    const imageSrc = normalizeMediaPath(p.image);
+    return `
     <div class="project-card reveal visible" onclick="openProjectModal(${p.id})">
       <div class="project-card__image">
-        <img src="${p.image}" alt="${p.title}" />
+        <img src="${imageSrc}" alt="${p.title}" />
         ${p.featured ? '<span class="project-card__featured-pill">⭐ Featured</span>' : ''}
       </div>
       <div class="project-card__body">
@@ -350,7 +385,8 @@ function renderProjects(list) {
         <span>Explore Details →</span>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
   init3DTiltEngine();
 }
 renderProjects(PROJECTS_DATA);
@@ -365,7 +401,7 @@ function filterProjects(tech, btn) {
 function openProjectModal(id) {
   const p = PROJECTS_DATA.find(x => x.id === id);
   if (!p) return;
-  document.getElementById('modal-img').src = p.image;
+  document.getElementById('modal-img').src = normalizeMediaPath(p.image);
   document.getElementById('modal-title').innerText = p.title;
   document.getElementById('modal-desc').innerText = p.longDescription || p.description;
   document.getElementById('modal-tags').innerHTML = p.technologies.map(t => `<span class="badge badge-blue">${t}</span>`).join('');
@@ -383,9 +419,11 @@ function closeProjectModal() {
 function renderCerts(list) {
   const grid = document.getElementById('certs-grid');
   if (!grid) return;
-  grid.innerHTML = list.map(c => `
+  grid.innerHTML = list.map(c => {
+    const imageSrc = normalizeMediaPath(c.image);
+    return `
     <div class="cert-card reveal-scale visible" onclick="openCertModal(${c.id})">
-      <div class="cert-card__thumb"><img src="${c.image}" alt="${c.title}" /></div>
+      <div class="cert-card__thumb"><img src="${imageSrc}" alt="${c.title}" /></div>
       <div class="cert-card__body">
         <h3 class="cert-card__title">${c.title}</h3>
         <p class="cert-card__issuer">${c.issuer}</p>
@@ -396,7 +434,8 @@ function renderCerts(list) {
         <span style="color:var(--text-primary); font-weight:700;">View →</span>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
   init3DTiltEngine();
 }
 renderCerts(CERTS_DATA);
@@ -416,7 +455,7 @@ function searchCerts(q) {
 function openCertModal(id) {
   const c = CERTS_DATA.find(x => x.id === id);
   if (!c) return;
-  document.getElementById('cert-modal-img').src = c.image;
+  document.getElementById('cert-modal-img').src = normalizeMediaPath(c.image);
   document.getElementById('cert-modal-title').innerText = c.title;
   document.getElementById('cert-modal-issuer').innerText = c.issuer + ' · ' + c.date;
   document.getElementById('cert-modal-desc').innerText = c.description;
@@ -668,7 +707,7 @@ function refreshAdminViews() {
   if (projList) {
     projList.innerHTML = PROJECTS_DATA.map(p => `
       <div style="background:var(--bg-card); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between; gap:1rem;">
-        <img src="${p.image}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
+        <img src="${normalizeMediaPath(p.image)}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
         <div style="flex-grow:1;">
           <div style="font-weight:700; font-size:0.95rem;">${p.title}</div>
           <div style="font-size:0.78rem; color:var(--text-muted);">${p.technologies.join(', ')}</div>
@@ -683,7 +722,7 @@ function refreshAdminViews() {
   if (certsList) {
     certsList.innerHTML = CERTS_DATA.map(c => `
       <div style="background:var(--bg-card); padding:1rem; border-radius:var(--radius-md); border:1px solid var(--border-color); display:flex; align-items:center; justify-content:space-between; gap:1rem;">
-        <img src="${c.image}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
+        <img src="${normalizeMediaPath(c.image)}" style="width:60px; height:45px; object-fit:cover; border-radius:var(--radius-sm);" />
         <div style="flex-grow:1;">
           <div style="font-weight:700; font-size:0.95rem;">${c.title}</div>
           <div style="font-size:0.78rem; color:var(--text-muted);">${c.issuer} · ${c.date}</div>
@@ -744,7 +783,7 @@ function adminAddProject(e) {
     title,
     description: desc,
     longDescription: desc,
-    image,
+    image: normalizeMediaPath(image),
     technologies: techStr.split(',').map(t => t.trim()),
     github,
     demo: '#',
@@ -781,7 +820,7 @@ function adminAddCert(e) {
     issuer,
     description: desc,
     date,
-    image
+    image: normalizeMediaPath(image)
   };
 
   CERTS_DATA.unshift(newCert);
