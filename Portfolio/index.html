@@ -741,13 +741,18 @@
               </div>
               <div class="form-row" style="margin-bottom:1rem;">
                 <div>
-                  <label class="admin-form-label">Image Path / URL *</label>
-                  <input id="proj-img-input" class="form-input" placeholder="assets/images/project-hand-gesture.png" required />
+                  <label class="admin-form-label">Image Path / URL</label>
+                  <input id="proj-img-input" class="form-input" placeholder="assets/images/project-hand-gesture.png" />
                 </div>
                 <div>
                   <label class="admin-form-label">GitHub Repository URL *</label>
                   <input id="proj-github-input" class="form-input" placeholder="https://github.com/..." required />
                 </div>
+              </div>
+              <div style="margin-bottom:1rem;">
+                <label class="admin-form-label">Or upload image</label>
+                <input type="file" id="proj-image-file" accept="image/*" onchange="handleImageUpload('proj-image-file', 'proj-img-input', 'proj-image-preview')" />
+                <img id="proj-image-preview" src="" alt="Project preview" style="display:none; margin-top:0.6rem; width:100%; max-width:240px; height:120px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border-color);" />
               </div>
               <div style="margin-bottom:1rem;">
                 <label class="admin-form-label">Short Description *</label>
@@ -779,13 +784,18 @@
               </div>
               <div class="form-row" style="margin-bottom:1rem;">
                 <div>
-                  <label class="admin-form-label">Image Path / URL *</label>
-                  <input id="cert-img-input" class="form-input" placeholder="assets/images/cert-java.jpg" required />
+                  <label class="admin-form-label">Image Path / URL</label>
+                  <input id="cert-img-input" class="form-input" placeholder="assets/images/cert-java.jpg" />
                 </div>
                 <div>
                   <label class="admin-form-label">Date / Year *</label>
                   <input id="cert-date-input" class="form-input" placeholder="2025" required />
                 </div>
+              </div>
+              <div style="margin-bottom:1rem;">
+                <label class="admin-form-label">Or upload image</label>
+                <input type="file" id="cert-image-file" accept="image/*" onchange="handleImageUpload('cert-image-file', 'cert-img-input', 'cert-image-preview')" />
+                <img id="cert-image-preview" src="" alt="Certificate preview" style="display:none; margin-top:0.6rem; width:100%; max-width:240px; height:120px; object-fit:cover; border-radius:var(--radius-md); border:1px solid var(--border-color);" />
               </div>
               <div style="margin-bottom:1rem;">
                 <label class="admin-form-label">Description *</label>

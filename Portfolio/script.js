@@ -363,6 +363,30 @@ function searchSkills(q) {
 }
 
 // ── PROJECTS RENDER & MODAL ────────────────────────────────────
+function handleImageUpload(fileInputId, targetInputId, previewId) {
+  const fileInput = document.getElementById(fileInputId);
+  const targetInput = document.getElementById(targetInputId);
+  const preview = previewId ? document.getElementById(previewId) : null;
+  const file = fileInput?.files?.[0];
+
+  if (!file || !targetInput) return;
+
+  if (file.size > 2 * 1024 * 1024) {
+    alert('Please choose an image smaller than 2MB.');
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    targetInput.value = reader.result;
+    if (preview) {
+      preview.src = reader.result;
+      preview.style.display = 'block';
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
 function renderProjects(list) {
   const grid = document.getElementById('projects-grid');
   if (!grid) return;
@@ -778,6 +802,11 @@ function adminAddProject(e) {
   const github = document.getElementById('proj-github-input').value;
   const desc = document.getElementById('proj-desc-input').value;
 
+  if (!image) {
+    alert('Please upload an image or enter an image path/URL before saving the project.');
+    return;
+  }
+
   const newProj = {
     id: Date.now(),
     title,
@@ -813,6 +842,11 @@ function adminAddCert(e) {
   const image = document.getElementById('cert-img-input').value;
   const date = document.getElementById('cert-date-input').value;
   const desc = document.getElementById('cert-desc-input').value;
+
+  if (!image) {
+    alert('Please upload an image or enter an image path/URL before saving the certificate.');
+    return;
+  }
 
   const newCert = {
     id: Date.now(),
