@@ -393,7 +393,7 @@ function renderProjects(list) {
   grid.innerHTML = list.map(p => {
     const imageSrc = normalizeMediaPath(p.image);
     return `
-    <div class="project-card reveal visible" onclick="openProjectModal(${p.id})">
+    <div class="project-card reveal visible" role="button" tabindex="0" onclick="openProjectModal(${p.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openProjectModal(${p.id});}">
       <div class="project-card__image">
         <img src="${imageSrc}" alt="${p.title}" />
         ${p.featured ? '<span class="project-card__featured-pill">⭐ Featured</span>' : ''}

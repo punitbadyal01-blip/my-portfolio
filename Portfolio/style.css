@@ -1141,6 +1141,22 @@ ul, ol { list-style: none; }
 .service-feature { font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem; }
 
 /* PROJECTS SECTION */
+.projects__summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+.projects__summary-pill {
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-full);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
 .projects__filters {
   display: flex;
   justify-content: center;
