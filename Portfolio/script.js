@@ -52,6 +52,8 @@ const DEFAULT_CERTS = [
   { id: 10, title: 'Firebase & Backend Development', issuer: 'Google Developers', description: 'Learned Firebase Firestore, Authentication, Cloud Functions, Realtime Database, and Hosting.', date: '2025', image: 'assets/images/cert-firebase.jpg' }
 ];
 
+const CERTS_STORAGE_KEY = 'punit_certs';
+
 const DEFAULT_SKILLS = [
   { name: 'Java', cat: 'languages', level: 5, icon: '☕' },
   { name: 'Python', cat: 'languages', level: 4, icon: '🐍' },
@@ -78,8 +80,11 @@ const DEFAULT_SKILLS = [
 // ── LOCAL STORAGE PERSISTENCE HELPERS ─────────────────────────
 function getStoredData(key, fallback) {
   const data = localStorage.getItem(key);
+  if (data === null) {
+    return fallback;
+  }
   try {
-    return data ? JSON.parse(data) : fallback;
+    return JSON.parse(data);
   } catch (e) {
     return fallback;
   }
@@ -87,6 +92,27 @@ function getStoredData(key, fallback) {
 
 function setStoredData(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
+}
+
+function loadStoredArrayData(key, fallback) {
+  const data = localStorage.getItem(key);
+  if (data === null) {
+    setStoredData(key, fallback);
+    return fallback;
+  }
+
+  try {
+    const parsed = JSON.parse(data);
+    if (!Array.isArray(parsed)) throw new Error('Stored data is not an array');
+    return parsed;
+  } catch (e) {
+    setStoredData(key, fallback);
+    return fallback;
+  }
+}
+
+function saveCertsData() {
+  setStoredData(CERTS_STORAGE_KEY, CERTS_DATA);
 }
 
 function normalizeMediaPath(value, fallback = '') {
@@ -123,7 +149,7 @@ function normalizeMediaPath(value, fallback = '') {
 }
 
 let PROJECTS_DATA = getStoredData('punit_projects', DEFAULT_PROJECTS).map(p => ({ ...p, image: normalizeMediaPath(p.image) }));
-let CERTS_DATA = getStoredData('punit_certs', DEFAULT_CERTS).map(c => ({ ...c, image: normalizeMediaPath(c.image) }));
+let CERTS_DATA = loadStoredArrayData(CERTS_STORAGE_KEY, DEFAULT_CERTS).map(c => ({ ...c, image: normalizeMediaPath(c.image) }));
 let SKILLS_DATA = getStoredData('punit_skills', DEFAULT_SKILLS);
 let MESSAGES_DATA = getStoredData('punit_messages', []);
 
@@ -868,7 +894,7 @@ function adminAddCert(e) {
 function adminDeleteCert(id) {
   if (!confirm('Are you sure you want to delete this certificate?')) return;
   CERTS_DATA = CERTS_DATA.filter(c => c.id !== id);
-  setStoredData('punit_certs', CERTS_DATA);
+  saveCertsData();
   renderCerts(CERTS_DATA);
   refreshAdminViews();
 }
