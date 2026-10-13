@@ -482,6 +482,7 @@ function renderProjects(list) {
     const imageSrc = normalizeMediaPath(p.image);
     return `
     <div class="project-card reveal visible" role="button" tabindex="0" onclick="openProjectModal(${p.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openProjectModal(${p.id});}">
+      <div class="project-card__image"><img src="${imageSrc}" alt="${p.title}" loading="lazy" width="640" height="400" /></div>
       <div class="project-card__index"><span>PROJECT ${String(p.id).padStart(2, '0')}</span><span aria-hidden="true">↗</span></div>
       <div class="project-card__body">
         <h3 class="project-card__title">${p.title}</h3>
@@ -626,9 +627,9 @@ if (themeBtn) {
     themeBtn.innerText = next === 'dark' ? '◐' : '◑';
     localStorage.setItem('theme', next);
   });
-  if (localStorage.getItem('theme') === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    themeBtn.innerText = '◑';
+  if (localStorage.getItem('theme') === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    themeBtn.innerText = '◐';
   }
 }
 

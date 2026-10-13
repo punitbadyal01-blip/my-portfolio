@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +24,7 @@
 
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="spatial.css" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -74,52 +75,25 @@
   </nav>
 
   <main id="main-content">
-    <!-- HERO SECTION -->
-    <section id="home" class="home">
+    <section id="home" class="studio-hero">
       <div class="container">
-        <div class="home__wrapper">
-          <div class="home__left reveal">
-            <div class="home__avail"><span class="home__avail-dot"></span> Open to internships &amp; collaborations</div>
-            <p class="hero-eyebrow">COMPUTER SCIENCE / CLASS OF 2028</p>
-            <h1 class="home__heading">Punit Badyal<span class="hero-role">Software developer.<br /><span class="home__name-gradient">Always learning.</span></span></h1>
-            <p class="home__bio">I’m Punit, a Computer Science student building web applications and exploring computer vision. I turn interesting problems into useful digital experiences.</p>
-            <div class="home__actions">
-              <a href="#projects" class="btn btn-primary btn-lg">Explore my work <span aria-hidden="true">↗</span></a>
-              <a href="assets/images/Punit_Badyal_Resume.pdf" download="Punit_Badyal_Resume.pdf" class="btn btn-outline btn-lg">Download résumé <span aria-hidden="true">↓</span></a>
-            </div>
-            <div class="home__socials">
-              <a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-              <a href="https://www.linkedin.com/in/punit-badyal-1b2935324" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-              <a href="mailto:punitbadyal01@gmail.com">Email ↗</a>
-            </div>
-            <div class="hero-note"><span>BASED IN INDIA</span><span>BUILDING FOR THE WEB &amp; BEYOND</span></div>
-          </div>
-
-          <!-- 3D Profile Photo Card -->
-          <div class="home__right reveal-right">
-            <div class="photo-scene"><span class="portrait-index">01 / THE DEVELOPER</span>
-              <div id="hero-photo-card" class="photo-card-3d">
-                <div class="photo-frame">
-                  <img src="assets/images/profile.jpg" alt="Punit Badyal Profile" class="photo-img" fetchpriority="high" width="600" height="750" />
-                  <div class="photo-info-overlay">
-                    <p class="photo-name">Punit Badyal</p>
-                    <p class="photo-role">Web development · Computer vision</p>
-                    <div class="photo-status"><span class="photo-status-dot"></span> Let’s build something meaningful</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="studio-topline"><span>DEVELOPER PORTFOLIO / 2026</span><span><i></i> OPEN TO OPPORTUNITIES</span></div>
+        <h1 class="studio-name">PUNIT BADYAL<span class="name-star" aria-hidden="true">✳</span></h1>
+        <div class="studio-composition">
+          <div class="studio-intro"><span class="studio-kicker">A LITTLE LOGIC.<br />A LOT OF CURIOSITY.</span><h2>I build things<br />that <em>make<br />a difference.</em></h2><p>Computer Science student. Web developer. Exploring the space between useful software and creative ideas.</p><a href="#projects" class="studio-link">Discover my work <span>↘</span></a><div class="studio-socials"><a href="https://github.com/punitbadyal01-blip" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/punit-badyal-1b2935324" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div>
+          <figure class="studio-portrait"><div class="portrait-paper" aria-hidden="true"></div><img src="assets/images/profile.jpg" alt="Punit Badyal" width="600" height="750" fetchpriority="high" /><figcaption><span>PUNIT, IN REAL LIFE.</span><span>01 / HELLO</span></figcaption></figure>
+          <div class="studio-side"><span class="studio-side-label">BASED IN INDIA · BUILDING EVERYWHERE</span><a class="hello-seal" href="#contact">HAVE AN IDEA?<strong>Let’s talk ↗</strong></a><div class="studio-side-bottom"><span>WEB DEVELOPMENT<br />COMPUTER VISION<br />PROBLEM SOLVING</span><a href="assets/images/Punit_Badyal_Resume.pdf" download>Résumé ↓</a></div></div>
         </div>
+        <div class="studio-bottom"><span>THOUGHTFUL CODE. REAL-WORLD POSSIBILITIES.</span><a href="#projects">SCROLL TO EXPLORE ↓</a></div>
       </div>
     </section>
-
+    <div class="studio-marquee" aria-label="Interests"><span>IDEAS INTO INTERFACES</span><b>✳</b><span>CURIOSITY INTO CODE</span><b>✳</b><span>LEARNING BY BUILDING</span><b>✳</b></div>
     <!-- PROJECTS SECTION -->
     <section id="projects" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">My Work</span>
-          <h2 class="section-title">Selected <span class="gradient-text">work.</span></h2>
+          <span class="section-label">01 / SELECTED PROJECTS</span>
+          <h2 class="section-title">Made with curiosity<span class="gradient-text">.</span></h2>
           <p class="section-desc">A selection of my software projects, with the tools used and the problems they explore.</p>
         </div>
 
@@ -146,7 +120,7 @@
     <section id="about" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Who I Am</span>
+          <span class="section-label">02 / THE BACKSTORY</span>
           <h2 class="section-title">Curious by nature.<br /><span class="gradient-text">Developer by practice.</span></h2>
           <p class="section-desc">Computer Science student from Jammu &amp; Kashmir, studying in Karur, Tamil Nadu.</p>
         </div>
@@ -236,7 +210,7 @@
     <section id="skills" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Expertise</span>
+          <span class="section-label">03 / MY TOOLBOX</span>
           <h2 class="section-title">The tools <span class="gradient-text">behind the work.</span></h2>
           <p class="section-desc">Technologies and tools I work with — from CS fundamentals to modern web frameworks.</p>
         </div>
@@ -266,7 +240,7 @@
     <section id="certificates" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Credentials</span>
+          <span class="section-label">04 / LEARNING, ALWAYS</span>
           <h2 class="section-title">Always <span class="gradient-text">learning.</span></h2>
           <p class="section-desc">Certificates, event participation, and badges. Each entry links to the original document.</p>
         </div>
@@ -295,7 +269,7 @@
     <section id="contact" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <span class="section-label">Get In Touch</span>
+          <span class="section-label">05 / YOUR NEXT COLLABORATOR</span>
           <h2 class="section-title">Have something <span class="gradient-text">in mind?</span></h2>
           <p class="section-desc">Open to internships and opportunities to learn, contribute, and build useful software.</p>
         </div>
@@ -706,5 +680,6 @@
 
   <!-- JavaScript Application Bundle -->
   <script src="script.js"></script>
+  <script src="spatial.js"></script>
 </body>
 </html>
