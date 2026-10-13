@@ -7,8 +7,8 @@ const DEFAULT_PROJECTS = [
   {
     id: 1,
     title: 'AI-Based Hand Gesture Controlled Game System',
-    description: 'A cutting-edge computer vision system that allows users to control games using real-time hand gesture recognition.',
-    longDescription: 'Built with Python, OpenCV, and MediaPipe, the system tracks hand landmarks in real time and maps gestures to controls for games like Subway Surfers with ultra low latency.',
+    description: 'A computer vision project that maps hand gestures to game controls using Python, OpenCV, and MediaPipe.',
+    longDescription: 'Built with Python, OpenCV, and MediaPipe, the system tracks hand landmarks in real time and maps gestures to controls for games like Subway Surfers using hand tracking.',
     image: 'assets/images/project-hand-gesture.png',
     technologies: ['Python', 'OpenCV', 'MediaPipe', 'Computer Vision', 'ML'],
     github: 'https://github.com/punitbadyal01-blip',
@@ -18,7 +18,7 @@ const DEFAULT_PROJECTS = [
   {
     id: 2,
     title: 'Online Courier Service Management System',
-    description: 'A modern web-based courier booking and tracking interface with clean UI, real-time status updates, and intuitive dashboard.',
+    description: 'A web application for courier bookings, shipment tracking, and order status management.',
     longDescription: 'Full-stack web application for booking and tracking courier services. Features booking forms, tracking dashboards, dynamic order status, and responsive UI design.',
     image: 'assets/images/project-courier-service.png',
     technologies: ['Java', 'JavaScript', 'CSS3', 'HTML5'],
@@ -40,16 +40,96 @@ const DEFAULT_PROJECTS = [
 ];
 
 const DEFAULT_CERTS = [
-  { id: 1, title: 'Java Programming Masterclass', issuer: 'Udemy', description: 'Comprehensive Java course covering core concepts, OOP principles, collections, streams, multithreading, and Java 17+.', date: '2024', image: 'assets/images/cert-java.jpg' },
-  { id: 2, title: 'Python Bootcamp — Zero to Hero', issuer: 'Udemy', description: 'Complete Python programming covering fundamentals, data structures, file handling, OOP, NumPy & Pandas.', date: '2024', image: 'assets/images/cert-python.jpg' },
-  { id: 3, title: 'Java & Spring Boot Masterclass', issuer: 'Udemy', description: 'In-depth Java & Spring Boot course covering microservices, JPA, Hibernate, REST APIs, and Security.', date: '2025', image: 'assets/images/cert-react.jpg' },
-  { id: 4, title: 'JavaScript Algorithms & Data Structures', issuer: 'freeCodeCamp', description: 'Mastered JavaScript fundamentals, ES6+ features, functional programming, OOP, and data structures.', date: '2024', image: 'assets/images/cert-js-algo.jpg' },
-  { id: 5, title: 'Responsive Web Design', issuer: 'freeCodeCamp', description: 'Built responsive websites using modern HTML5, CSS3, Flexbox, Grid, and accessibility best practices.', date: '2024', image: 'assets/images/cert-responsive.jpg' },
-  { id: 6, title: 'Machine Learning with Python', issuer: 'Coursera', description: 'Applied machine learning techniques including supervised & unsupervised learning, regression, and classification.', date: '2025', image: 'assets/images/cert-ml.jpg' },
-  { id: 7, title: 'Computer Vision & OpenCV', issuer: 'OpenCV University', description: 'Hands-on computer vision course covering image processing, object detection, and feature extraction.', date: '2025', image: 'assets/images/cert-opencv.jpg' },
-  { id: 8, title: 'Spring Boot & Microservices', issuer: 'Udemy', description: 'RESTful APIs and microservices with Spring Boot, Spring Security, Spring Data JPA, and Docker.', date: '2025', image: 'assets/images/cert-springboot.jpg' },
-  { id: 9, title: 'Git, GitHub & Version Control', issuer: 'Coursera', description: 'Mastered Git workflows, branching strategies, pull requests, merge conflicts, and CI/CD pipelines.', date: '2024', image: 'assets/images/cert-git.jpg' },
-  { id: 10, title: 'Firebase & Backend Development', issuer: 'Google Developers', description: 'Learned Firebase Firestore, Authentication, Cloud Functions, Realtime Database, and Hosting.', date: '2025', image: 'assets/images/cert-firebase.jpg' }
+  {
+    "id": 1,
+    "title": "Web Weave — TRENZ ’25",
+    "issuer": "M. Kumarasamy College of Engineering",
+    "description": "Participation in Web Weave at TRENZ ’25, organised by the Department of Freshmen Engineering.",
+    "date": "30 Apr 2025",
+    "image": "assets/images/cert-java.jpg",
+    "category": "Participation"
+  },
+  {
+    "id": 2,
+    "title": "Cybersecurity Analyst Job Simulation",
+    "issuer": "Tata / Forage",
+    "description": "Completed a job simulation covering identity and access management (IAM) fundamentals, IAM strategy assessment, custom IAM solutions, and platform integration.",
+    "date": "4 Jun 2025",
+    "image": "assets/images/cert-python.jpg",
+    "category": "Completion"
+  },
+  {
+    "id": 3,
+    "title": "Adobe India Hackathon — Round 1",
+    "issuer": "Adobe / Unstop",
+    "description": "Participated with Team VOSTRO in Round 1: Online MCQ Assessment + Coding.",
+    "date": "",
+    "image": "assets/images/cert-react.jpg",
+    "category": "Participation"
+  },
+  {
+    "id": 4,
+    "title": "Python Coder",
+    "issuer": "Kaggle",
+    "description": "Earned the Python Coder badge on Kaggle.",
+    "date": "10 Nov 2025",
+    "image": "assets/images/cert-js-algo.jpg",
+    "category": "Badge"
+  },
+  {
+    "id": 5,
+    "title": "Code Forker",
+    "issuer": "Kaggle",
+    "description": "Earned the Code Forker badge on Kaggle.",
+    "date": "14 Nov 2025",
+    "image": "assets/images/cert-responsive.jpg",
+    "category": "Badge"
+  },
+  {
+    "id": 6,
+    "title": "Google Analytics Certification",
+    "issuer": "Google",
+    "description": "Issued 8 August 2025. The certificate’s stated validity ended on 8 August 2026.",
+    "date": "8 Aug 2025",
+    "image": "assets/images/cert-ml.jpg",
+    "category": "Certification"
+  },
+  {
+    "id": 7,
+    "title": "Aether HackConquest Hackathon",
+    "issuer": "Thakur College of Engineering and Technology / Unstop",
+    "description": "Participated with Team Opp_hunter in the Aether HackConquest Hackathon organised by TCET, Mumbai.",
+    "date": "",
+    "image": "assets/images/cert-opencv.jpg",
+    "category": "Participation"
+  },
+  {
+    "id": 8,
+    "title": "MKCE | UNSTOP | IEEE — Coding Contest",
+    "issuer": "M. Kumarasamy College of Engineering / Unstop",
+    "description": "Participated in the Code Contest organised by M. Kumarasamy College of Engineering, Karur.",
+    "date": "",
+    "image": "assets/images/cert-springboot.jpg",
+    "category": "Participation"
+  },
+  {
+    "id": 9,
+    "title": "APPRADIX — 12Hrs APPATHON",
+    "issuer": "Mobile App Club, MKCE / ISTE",
+    "description": "Participated in APPRADIX, a 12-hour appathon organised by the Mobile App Club powered by ISTE at MKCE.",
+    "date": "24 Oct 2025",
+    "image": "assets/images/cert-git.jpg",
+    "category": "Participation"
+  },
+  {
+    "id": 10,
+    "title": "Developing a Consistent Metric to Measure End-User Water Service in Developing Countries",
+    "issuer": "Osman Lab, Stanford University",
+    "description": "Certificate of appreciation for participation in the study, conducted in collaboration with Gnanamani College of Technology and supported by the King Center on Global Development.",
+    "date": "",
+    "image": "assets/images/cert-firebase.jpg",
+    "category": "Appreciation"
+  }
 ];
 
 const CERTS_STORAGE_KEY = 'punit_certs';
@@ -149,7 +229,11 @@ function normalizeMediaPath(value, fallback = '') {
 }
 
 let PROJECTS_DATA = getStoredData('punit_projects', DEFAULT_PROJECTS).map(p => ({ ...p, image: normalizeMediaPath(p.image) }));
-let CERTS_DATA = loadStoredArrayData(CERTS_STORAGE_KEY, DEFAULT_CERTS).map(c => ({ ...c, image: normalizeMediaPath(c.image) }));
+let CERTS_DATA = loadStoredArrayData(CERTS_STORAGE_KEY, DEFAULT_CERTS).map(c => {
+  const bundled = DEFAULT_CERTS.find(item => normalizeMediaPath(item.image) === normalizeMediaPath(c.image));
+  return { ...c, ...(bundled || {}), image: normalizeMediaPath(c.image) };
+});
+saveCertsData();
 let SKILLS_DATA = getStoredData('punit_skills', DEFAULT_SKILLS);
 let MESSAGES_DATA = getStoredData('punit_messages', []);
 
@@ -245,27 +329,7 @@ function typeLoop() {
 typeLoop();
 
 // ── UNIVERSAL 3D SPATIAL TILT ENGINE ───────────────────────────
-function init3DTiltEngine() {
-  const cards = document.querySelectorAll('.project-card, .cert-card, .skill-card, .service-card, .about__card, .about__block, .contact__form-card, #hero-photo-card');
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const rotateX = ((y - cy) / cy) * -10;
-      const rotateY = ((x - cx) / cx) * 10;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-    });
-  });
-}
+function init3DTiltEngine() { /* Cards use subtle CSS hover states. */ }
 
 // ── MONOCHROME 3D CANVAS PARTICLE SYSTEM ──────────────────────
 const canvas = document.getElementById('particles-canvas');
@@ -365,11 +429,9 @@ function renderSkills(list) {
   if (!grid) return;
   grid.innerHTML = list.map(s => `
     <div class="skill-card reveal-scale visible">
-      <div class="skill-card__icon">${s.icon}</div>
+
       <div class="skill-card__name">${s.name}</div>
-      <div class="skill-card__dots">
-        ${[1,2,3,4,5].map(n => `<span class="skill-dot ${n <= s.level ? 'active' : ''}"></span>`).join('')}
-      </div>
+
     </div>
   `).join('');
   init3DTiltEngine();
@@ -420,10 +482,7 @@ function renderProjects(list) {
     const imageSrc = normalizeMediaPath(p.image);
     return `
     <div class="project-card reveal visible" role="button" tabindex="0" onclick="openProjectModal(${p.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openProjectModal(${p.id});}">
-      <div class="project-card__image">
-        <img src="${imageSrc}" alt="${p.title}" />
-        ${p.featured ? '<span class="project-card__featured-pill">⭐ Featured</span>' : ''}
-      </div>
+      <div class="project-card__index"><span>PROJECT ${String(p.id).padStart(2, '0')}</span><span aria-hidden="true">↗</span></div>
       <div class="project-card__body">
         <h3 class="project-card__title">${p.title}</h3>
         <p class="project-card__desc">${p.description}</p>
@@ -432,7 +491,7 @@ function renderProjects(list) {
         </div>
       </div>
       <div class="project-card__footer">
-        <span>Explore Details →</span>
+        <span>View project details ↗</span>
       </div>
     </div>
   `;
@@ -451,12 +510,13 @@ function filterProjects(tech, btn) {
 function openProjectModal(id) {
   const p = PROJECTS_DATA.find(x => x.id === id);
   if (!p) return;
-  document.getElementById('modal-img').src = normalizeMediaPath(p.image);
+
   document.getElementById('modal-title').innerText = p.title;
   document.getElementById('modal-desc').innerText = p.longDescription || p.description;
   document.getElementById('modal-tags').innerHTML = p.technologies.map(t => `<span class="badge badge-blue">${t}</span>`).join('');
   document.getElementById('modal-github').href = p.github;
   document.getElementById('modal-demo').href = p.demo;
+  document.getElementById('modal-demo').hidden = !p.demo || p.demo === '#';
   document.getElementById('project-modal').classList.add('open');
 }
 
@@ -472,15 +532,15 @@ function renderCerts(list) {
   grid.innerHTML = list.map(c => {
     const imageSrc = normalizeMediaPath(c.image);
     return `
-    <div class="cert-card reveal-scale visible" onclick="openCertModal(${c.id})">
-      <div class="cert-card__thumb"><img src="${imageSrc}" alt="${c.title}" /></div>
+    <div class="cert-card reveal-scale visible" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); openCertModal(${c.id});}" onclick="openCertModal(${c.id})">
+      <div class="cert-card__thumb"><img src="${imageSrc}" alt="${c.title}" loading="lazy" /></div>
       <div class="cert-card__body">
         <h3 class="cert-card__title">${c.title}</h3>
-        <p class="cert-card__issuer">${c.issuer}</p>
+        <p class="cert-card__issuer">${c.issuer}</p><span class="credential-type">${c.category || "Credential"}</span>
         <p class="cert-card__desc">${c.description}</p>
       </div>
       <div class="cert-card__footer">
-        <span>📅 ${c.date}</span>
+        <span>${c.date || "Date not stated"}</span>
         <span style="color:var(--text-primary); font-weight:700;">View →</span>
       </div>
     </div>
@@ -490,24 +550,31 @@ function renderCerts(list) {
 }
 renderCerts(CERTS_DATA);
 
-function filterCerts(issuer, btn) {
-  document.querySelectorAll('.certs__tab').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  const filtered = issuer === 'All' ? CERTS_DATA : CERTS_DATA.filter(c => c.issuer === issuer);
+let selectedCertCategory = 'All';
+let certificateQuery = '';
+function applyCertificateFilters() {
+  const query = certificateQuery.toLowerCase().trim();
+  const filtered = CERTS_DATA.filter(c => (selectedCertCategory === 'All' || c.category === selectedCertCategory) && (c.title + ' ' + c.issuer).toLowerCase().includes(query));
   renderCerts(filtered);
+  if (!filtered.length) document.getElementById('certs-grid').innerHTML = '<p class="empty-state" role="status">No matching credentials. Try another search or category.</p>';
 }
-
-function searchCerts(q) {
-  const filtered = CERTS_DATA.filter(c => c.title.toLowerCase().includes(q.toLowerCase()) || c.issuer.toLowerCase().includes(q.toLowerCase()));
-  renderCerts(filtered);
+function filterCerts(category, btn) {
+  selectedCertCategory = category;
+  document.querySelectorAll('.certs__tab').forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', String(b === btn)); });
+  applyCertificateFilters();
+}
+function searchCerts(query) {
+  certificateQuery = query;
+  applyCertificateFilters();
 }
 
 function openCertModal(id) {
   const c = CERTS_DATA.find(x => x.id === id);
   if (!c) return;
   document.getElementById('cert-modal-img').src = normalizeMediaPath(c.image);
+  document.getElementById('cert-modal-img').alt = c.title;
   document.getElementById('cert-modal-title').innerText = c.title;
-  document.getElementById('cert-modal-issuer').innerText = c.issuer + ' · ' + c.date;
+  document.getElementById('cert-modal-issuer').innerText = c.issuer + (c.date ? ' · ' + c.date : '');
   document.getElementById('cert-modal-desc').innerText = c.description;
   document.getElementById('cert-modal-download').href = c.image;
   document.getElementById('cert-modal').classList.add('open');
@@ -521,6 +588,7 @@ function closeCertModal() {
 // ── KEYBOARD ESCAPE KEY LISTENER ─────────────────────────────
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
+    closeMobileMenu();
     closeProjectModal();
     closeCertModal();
     closeAdminModal();
@@ -537,39 +605,15 @@ function updateCharCount(el) {
 
 function handleContactSubmit(e) {
   e.preventDefault();
-  const name = document.getElementById('contact-name').value;
-  const email = document.getElementById('contact-email').value;
-  const subject = document.getElementById('contact-subject').value;
-  const message = document.getElementById('contact-message').value;
-
-  const btn = document.getElementById('contact-submit-btn');
-  if (!btn) return;
-  btn.innerText = 'Sending…';
-  btn.disabled = true;
-
-  // Create message payload & store in localStorage
-  const msgObj = {
-    id: Date.now(),
-    name,
-    email,
-    subject,
-    message,
-    date: new Date().toLocaleString()
-  };
-  MESSAGES_DATA.unshift(msgObj);
-  setStoredData('punit_messages', MESSAGES_DATA);
-
-  setTimeout(() => {
-    const banner = document.getElementById('form-success-banner');
-    if (banner) banner.style.display = 'block';
-    const form = document.getElementById('contact-form');
-    if (form) form.reset();
-    updateCharCount({ value: '' });
-    btn.innerText = 'Send Message';
-    btn.disabled = false;
-    refreshAdminViews();
-    setTimeout(() => { if (banner) banner.style.display = 'none'; }, 5000);
-  }, 800);
+  const form = e.target;
+  if (!form.reportValidity()) return;
+  const name = document.getElementById('contact-name').value.trim();
+  const email = document.getElementById('contact-email').value.trim();
+  const subject = document.getElementById('contact-subject').value.trim();
+  const message = document.getElementById('contact-message').value.trim();
+  const body = message + String.fromCharCode(10,10) + 'From: ' + name + ' <' + email + '>';
+  window.location.href = 'mailto:punitbadyal01@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  document.getElementById('form-success-banner').style.display = 'block';
 }
 
 // ── THEME SWITCHER ─────────────────────────────────────────────
@@ -579,12 +623,12 @@ if (themeBtn) {
     const current = document.documentElement.getAttribute('data-theme');
     const next = current === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
-    themeBtn.innerText = next === 'dark' ? '🌙' : '☀️';
+    themeBtn.innerText = next === 'dark' ? '◐' : '◑';
     localStorage.setItem('theme', next);
   });
   if (localStorage.getItem('theme') === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
-    themeBtn.innerText = '☀️';
+    themeBtn.innerText = '◑';
   }
 }
 
@@ -594,74 +638,12 @@ const mobileMenu = document.getElementById('mobile-menu');
 if (hamburgerBtn && mobileMenu) {
   hamburgerBtn.addEventListener('click', () => {
     mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', String(mobileMenu.classList.contains('open')));
   });
 }
 function closeMobileMenu() {
   if (mobileMenu) mobileMenu.classList.remove('open');
-}
-
-// ── PUNIT AI CHATBOT ───────────────────────────────────────────
-function toggleChat() {
-  const win = document.getElementById('chatbot-window');
-  if (win) win.classList.toggle('open');
-}
-
-const KB = [
-  { pattern: /hi|hello|hey|greetings/i, reply: "Hello! 👋 I'm **Punit AI**! How can I help you explore Punit Badyal's portfolio today?" },
-  { pattern: /about|who is punit/i, reply: "**Punit Badyal** is a Full Stack & AI Developer and 3rd-year (5th Semester) CSE student at M.Kumarasamy College of Engineering, Karur (MKCE)." },
-  { pattern: /skills|tech/i, reply: "**Punit's Core Skills:** Java, Spring Boot, Python, OpenCV, MediaPipe, HTML5/CSS3, JavaScript, DSA, DBMS." },
-  { pattern: /projects|built/i, reply: "**Featured Projects:**\n1. AI Hand Gesture Control Game (Python/OpenCV)\n2. Courier Management System (Java/JS)\n3. Image Watermark Adder (Canvas API)" },
-  { pattern: /contact|email|phone/i, reply: "📧 **Email:** punitbadyal01@gmail.com\n📱 **Phone:** +91 7780886857\n🐙 **GitHub:** github.com/punitbadyal01-blip" },
-  { pattern: /resume|cv|download/i, reply: "📄 You can download Punit Badyal's official Resume here: <a href='assets/images/Punit_Badyal_Resume.pdf' download target='_blank' style='color:#FFFFFF; text-decoration:underline; font-weight:bold;'>Download Punit_Badyal_Resume.pdf</a>" },
-  { pattern: /pricing|services|cost/i, reply: "💰 **Services:**\n• Portfolio Website: ₹999 – ₹2,499\n• Frontend App: ₹1,999 – ₹3,999\n• Full Stack App: ₹3,999 – ₹6,999\n• AI/ML Integration: ₹2,999 – ₹7,999" }
-];
-
-function sendChatMsg(customText) {
-  const input = document.getElementById('chat-input');
-  const text = customText || (input ? input.value.trim() : '');
-  if (!text) return;
-  if (!customText && input) input.value = '';
-
-  // Secret admin trigger via chat
-  if (text.toLowerCase() === '/pb' || text.toLowerCase() === 'ctrlshiftpb') {
-    openSecretAdmin();
-  }
-
-  const chatMsgs = document.getElementById('chat-messages');
-  if (!chatMsgs) return;
-
-  // User Message
-  const userDiv = document.createElement('div');
-  userDiv.className = 'chat-message user';
-  userDiv.innerHTML = `<div class="chat-bubble user">${text}</div>`;
-  chatMsgs.appendChild(userDiv);
-
-  // Typing Indicator
-  const typingDiv = document.createElement('div');
-  typingDiv.className = 'chat-message bot';
-  typingDiv.innerHTML = `<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>`;
-  chatMsgs.appendChild(typingDiv);
-  chatMsgs.scrollTop = chatMsgs.scrollHeight;
-
-  setTimeout(() => {
-    chatMsgs.removeChild(typingDiv);
-    let replyText = "For detailed questions, contact Punit directly at **punitbadyal01@gmail.com**! 😊";
-    if (text.toLowerCase() === '/pb' || text.toLowerCase() === 'ctrlshiftpb') {
-      replyText = "🔒 **Opening Secret Admin Portal...**";
-    } else {
-      for (const item of KB) {
-        if (item.pattern.test(text)) {
-          replyText = item.reply;
-          break;
-        }
-      }
-    }
-    const botDiv = document.createElement('div');
-    botDiv.className = 'chat-message bot';
-    botDiv.innerHTML = `<div class="chat-bubble bot">${replyText.replace(/\n/g, '<br/>')}</div>`;
-    chatMsgs.appendChild(botDiv);
-    chatMsgs.scrollTop = chatMsgs.scrollHeight;
-  }, 600);
+  if (hamburgerBtn) hamburgerBtn.setAttribute('aria-expanded', 'false');
 }
 
 // ── SECRET ADMIN DASHBOARD LOGIC & TRIGGERS ───────────────────
